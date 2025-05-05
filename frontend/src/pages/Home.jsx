@@ -53,6 +53,18 @@ const placeholderProducts = [
     price:100,
     images:[{url:"https://picsum.photos/id/190/500/400", alText:"Product 1"},]
   },
+  {
+    _id:9,
+    name:"Product 9",
+    price:100,
+    images:[{url:"https://picsum.photos/id/200/500/400", alText:"Product 1"},]
+  },
+  {
+    _id:10,
+    name:"Product 10",
+    price:100,
+    images:[{url:"https://picsum.photos/id/600/500/400", alText:"Product 1"},]
+  },
 ]
 function Home() {
   return (

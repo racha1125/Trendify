@@ -1,28 +1,70 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 function ProductCarousel({ products }) {
-  const ITEMS_PER_PAGE = 5;
-  const ITEM_WIDTH = 250;
-  const MARGIN_RIGHT = 20;
+  const ITEM_WIDTH = 250; // Width of each item
+  const MARGIN_RIGHT = 20; // Margin between items
+  const ITEMS_PER_PAGE_DESKTOP = 5; // 5 items for desktop
+  const ITEMS_PER_PAGE_MOBILE = 1; // 1 item for mobile
+  const [pageIndex, setPageIndex] = useState(0); // Track the current page index
+  const [isMobile, setIsMobile] = useState(false); // Track if the screen size is mobile
+
+  const touchStartX = useRef(0); // Store the initial touch position
+  const touchEndX = useRef(0); // Store the final touch position
+
+  const ITEMS_PER_PAGE = isMobile ? ITEMS_PER_PAGE_MOBILE : ITEMS_PER_PAGE_DESKTOP;
   const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
-  const [pageIndex, setPageIndex] = useState(0);
 
   const handleScroll = (direction) => {
     if (direction === 'left' && pageIndex > 0) {
-      setPageIndex((prev) => prev - 1);
+      setPageIndex((prev) => prev - 1); // Scroll left (previous item(s))
     } else if (direction === 'right' && pageIndex < totalPages - 1) {
-      setPageIndex((prev) => prev + 1);
+      setPageIndex((prev) => prev + 1); // Scroll right (next item(s))
     }
   };
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX; // Get the initial touch position
+  };
+
+  const handleTouchEnd = (e) => {
+    touchEndX.current = e.changedTouches[0].clientX; // Get the final touch position
+
+    if (touchStartX.current - touchEndX.current > 50) {
+      // Swiped left
+      handleScroll('right');
+    } else if (touchEndX.current - touchStartX.current > 50) {
+      // Swiped right
+      handleScroll('left');
+    }
+  };
+
+  // Set the isMobile state based on window width
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Adjust based on the screen width threshold (e.g., 768px)
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Initial check
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const VIEWPORT_WIDTH = (ITEM_WIDTH + MARGIN_RIGHT) * ITEMS_PER_PAGE - MARGIN_RIGHT;
   const isLeftDisabled = pageIndex === 0;
   const isRightDisabled = pageIndex >= totalPages - 1;
 
   return (
-    <div className="relative mx-auto" style={{ width: VIEWPORT_WIDTH }}>
+    <div
+      className="relative mx-auto mb-4"
+      style={{ width: VIEWPORT_WIDTH }}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* Left Arrow */}
       <button
         className={`absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 cursor-pointer transition-opacity ${
@@ -55,7 +97,7 @@ function ProductCarousel({ products }) {
         >
           {products.map((product, index) => (
             <Link
-              key={index}
+              key={product._id}
               to={`/product/${product._id}`}
               style={{
                 width: ITEM_WIDTH,
@@ -63,15 +105,15 @@ function ProductCarousel({ products }) {
                 flexShrink: 0,
               }}
             >
-              <div className="bg-white border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+              <div className="relative">
                 <img
                   src={product.images[0].url}
                   alt={product.images[0].altText}
-                  className="w-full h-80 object-cover rounded-t-lg"
+                  className="w-full h-80 object-cover rounded-lg"
                 />
-                <div className="p-3">
-                  <h3 className="text-sm font-medium mb-1">{product.name}</h3>
-                  <p className="text-gray-500 text-sm font-semibold">₹ {product.price}</p>
+                <div className="absolute bottom-0 left-0 right-0 backdrop-blur-lg text-white p-4 rounded-b-lg">
+                  <h4 className="font-medium">{product.name}</h4>
+                  <p className="mt-1">₹ {product.price}</p>
                 </div>
               </div>
             </Link>
