@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react'
 import {toast} from 'sonner'
+import ProductGrid from './ProductGrid';
 
 function ProductDetails() {
     const SelectedProduct = useMemo(() => ({
@@ -22,6 +23,33 @@ function ProductDetails() {
             }
         ]
     }), []);
+    const similarProducts = [
+        {
+            _id:1,
+            name:"Product 1",
+            price:100,
+            images:[{url:"https://picsum.photos/id/10/500/400", alText:"Product 1"},]
+        },
+        {
+            _id:2,
+            name:"Product 2",
+            price:100,
+            images:[{url:"https://picsum.photos/id/1031/500/400", alText:"Product 1"},]
+        },
+        {
+            _id:3,
+            name:"Product 3",
+            price:100,
+            images:[{url:"https://picsum.photos/id/1032/500/400", alText:"Product 1"},]
+        },
+        {
+            _id:4,
+            name:"Product 4",
+            price:100,
+            images:[{url:"https://picsum.photos/id/1050/500/400", alText:"Product 1"},]
+        },
+    ]
+
     const [mainImage, setMainImage] = useState("");
     const [selectedSize, setSelectedSize] = useState("");
     const [selectedColor, setSelectedColor] = useState("");
@@ -161,6 +189,7 @@ function ProductDetails() {
                 <h2 className='text-2xl text-center font-medium mb-4'>
                     You May Also Like
                 </h2>
+                <ProductGrid products={similarProducts}/>
             </div>
         </div>
     </div>
