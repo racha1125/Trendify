@@ -3,7 +3,7 @@ import Hero from '../components/Layout/Hero'
 import GenderCollectionSection from '../components/Products/GenderCollectionSection'
 import NewArrivals from '../components/Products/NewArrivals'
 import ProductDetails from '../components/Products/ProductDetails'
-import ProductGrid from '../components/Products/ProductGrid'
+import ProductCarousel from '../components/Products/ProductCarousel '
 const placeholderProducts = [
   {
       _id:1,
@@ -68,7 +68,7 @@ function Home() {
           <h2 className='text-3xl text-center font-bold mb-4'>
             Top Wears for Women
           </h2>
-          <ProductGrid products={placeholderProducts}/>
+          <ProductCarousel products={placeholderProducts}/>
         </div>
     </div>
   )
