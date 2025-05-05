@@ -1,57 +1,50 @@
+// Updated ProductCarousel.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 function ProductCarousel({ products }) {
-  const ITEM_WIDTH = 250; // Width of each item
-  const MARGIN_RIGHT = 20; // Margin between items
-  const ITEMS_PER_PAGE_DESKTOP = 5; // 5 items for desktop
-  const ITEMS_PER_PAGE_MOBILE = 1; // 1 item for mobile
-  const [pageIndex, setPageIndex] = useState(0); // Track the current page index
-  const [isMobile, setIsMobile] = useState(false); // Track if the screen size is mobile
+  const ITEM_WIDTH = 250;
+  const MARGIN_RIGHT = 20;
+  const ITEMS_PER_PAGE_DESKTOP = 5;
+  const ITEMS_PER_PAGE_MOBILE = 1;
+  const [pageIndex, setPageIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const touchStartX = useRef(0); // Store the initial touch position
-  const touchEndX = useRef(0); // Store the final touch position
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   const ITEMS_PER_PAGE = isMobile ? ITEMS_PER_PAGE_MOBILE : ITEMS_PER_PAGE_DESKTOP;
   const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
 
   const handleScroll = (direction) => {
     if (direction === 'left' && pageIndex > 0) {
-      setPageIndex((prev) => prev - 1); // Scroll left (previous item(s))
+      setPageIndex((prev) => prev - 1);
     } else if (direction === 'right' && pageIndex < totalPages - 1) {
-      setPageIndex((prev) => prev + 1); // Scroll right (next item(s))
+      setPageIndex((prev) => prev + 1);
     }
   };
 
   const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX; // Get the initial touch position
+    touchStartX.current = e.touches[0].clientX;
   };
 
   const handleTouchEnd = (e) => {
-    touchEndX.current = e.changedTouches[0].clientX; // Get the final touch position
-
+    touchEndX.current = e.changedTouches[0].clientX;
     if (touchStartX.current - touchEndX.current > 50) {
-      // Swiped left
       handleScroll('right');
     } else if (touchEndX.current - touchStartX.current > 50) {
-      // Swiped right
       handleScroll('left');
     }
   };
 
-  // Set the isMobile state based on window width
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Adjust based on the screen width threshold (e.g., 768px)
+      setIsMobile(window.innerWidth <= 768);
     };
-
     window.addEventListener('resize', handleResize);
-    handleResize(); // Initial check
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const VIEWPORT_WIDTH = (ITEM_WIDTH + MARGIN_RIGHT) * ITEMS_PER_PAGE - MARGIN_RIGHT;
@@ -65,29 +58,24 @@ function ProductCarousel({ products }) {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Left Arrow */}
-      <button
-        className={`absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 cursor-pointer transition-opacity ${
-          isLeftDisabled ? 'opacity-50' : 'hover:bg-gray-100'
-        }`}
-        onClick={() => handleScroll('left')}
-        disabled={isLeftDisabled}
-      >
-        <ChevronLeft />
-      </button>
+      {!isLeftDisabled && (
+        <button
+          className="absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 hover:bg-gray-100"
+          onClick={() => handleScroll('left')}
+        >
+          <ChevronLeft />
+        </button>
+      )}
 
-      {/* Right Arrow */}
-      <button
-        className={`absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 cursor-pointer transition-opacity ${
-          isRightDisabled ? 'opacity-50' : 'hover:bg-gray-100'
-        }`}
-        onClick={() => handleScroll('right')}
-        disabled={isRightDisabled}
-      >
-        <ChevronRight />
-      </button>
+      {!isRightDisabled && (
+        <button
+          className="absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 hover:bg-gray-100"
+          onClick={() => handleScroll('right')}
+        >
+          <ChevronRight />
+        </button>
+      )}
 
-      {/* Carousel */}
       <div className="overflow-hidden" style={{ width: VIEWPORT_WIDTH }}>
         <div
           className="flex transition-transform duration-500"

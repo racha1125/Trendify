@@ -11,7 +11,7 @@ function NewArrivals() {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
-  
+
   const newArrivals = [
     { _id: "1", name: "Stylish Jacket", price: 120, image: stylishJacket, altText: "Stylish Jacket" },
     { _id: "2", name: "Casual Sneakers", price: 800, image: casualSneakers, altText: "Casual Sneakers" },
@@ -19,17 +19,17 @@ function NewArrivals() {
     { _id: "4", name: "Trendy Backpack", price: 200, image: trendyBackpack, altText: "Trendy Backpack" },
   ];
 
-  const ITEM_WIDTH = isMobile ? 300 : 300; // 100% width for mobile, 300px for larger screens
-  const ITEMS_PER_SCROLL = isMobile ? 1 : 3; // 1 item at a time for mobile, 3 items for larger screens
-  const TOTAL_ITEMS = newArrivals.length;
+  const ITEM_WIDTH = isMobile ? 300 : 300;
+  const ITEMS_PER_SCROLL = isMobile ? 1 : 3;
 
   const updateScrollButtons = () => {
     const container = scrollRef.current;
     if (container) {
-      const leftScroll = container.scrollLeft;
-      const rightScrollable = container.scrollWidth > leftScroll + container.clientWidth;
-      setCanScrollLeft(leftScroll > 0);
-      setCanScrollRight(rightScrollable);
+      const scrollLeft = container.scrollLeft;
+      const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < maxScrollLeft - 5); // buffer for precision
     }
   };
 
@@ -49,10 +49,10 @@ function NewArrivals() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Set isMobile to true for small screens (mobile/tablet)
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    handleResize(); // Initial check
+    handleResize();
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
@@ -67,16 +67,16 @@ function NewArrivals() {
         </p>
       </div>
 
-      {/* Scrollable Content */}
       <div className="relative">
         {/* Left Arrow */}
-        <button
-          className={`absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 cursor-pointer transition-opacity ${canScrollLeft ? 'hover:bg-gray-100' : 'opacity-50 cursor-not-allowed'}`}
-          onClick={() => scroll('left')}
-          disabled={!canScrollLeft}
-        >
-          <FiChevronLeft className="text-2xl" />
-        </button>
+        {canScrollLeft && (
+          <button
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 cursor-pointer hover:bg-gray-100"
+            onClick={() => scroll('left')}
+          >
+            <FiChevronLeft className="text-2xl" />
+          </button>
+        )}
 
         {/* Carousel */}
         <div
@@ -89,7 +89,10 @@ function NewArrivals() {
           }}
         >
           {newArrivals.map((product) => (
-            <div key={product._id} className="flex-none w-full sm:w-[calc(100%-2rem)] md:w-[calc(33.33%-1.5rem)] relative">
+            <div
+              key={product._id}
+              className="flex-none w-full sm:w-[calc(100%-2rem)] md:w-[calc(33.33%-1.5rem)] relative"
+            >
               <img
                 src={product.image}
                 alt={product.altText}
@@ -107,13 +110,14 @@ function NewArrivals() {
         </div>
 
         {/* Right Arrow */}
-        <button
-          className={`absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 cursor-pointer transition-opacity ${canScrollRight ? 'hover:bg-gray-100' : 'opacity-50 cursor-not-allowed'}`}
-          onClick={() => scroll('right')}
-          disabled={!canScrollRight}
-        >
-          <FiChevronRight className="text-2xl" />
-        </button>
+        {canScrollRight && (
+          <button
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 cursor-pointer hover:bg-gray-100"
+            onClick={() => scroll('right')}
+          >
+            <FiChevronRight className="text-2xl" />
+          </button>
+        )}
       </div>
     </section>
   );
