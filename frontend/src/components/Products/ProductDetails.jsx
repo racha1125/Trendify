@@ -25,31 +25,55 @@ function ProductDetails() {
     }), []);
     const similarProducts = [
         {
-            _id:1,
-            name:"Product 1",
-            price:100,
-            images:[{url:"https://picsum.photos/id/10/500/400", alText:"Product 1"},]
+          _id: 1,
+          name: "Product 1",
+          price: 100,
+          originalPrice: 200,
+          discount: "50% OFF",
+          rating: 4.5,
+          fit: "REGULAR FIT",
+          images: [
+            { url: "https://picsum.photos/id/10/500/400", altText: "Product 1" },
+          ],
         },
         {
-            _id:2,
-            name:"Product 2",
-            price:100,
-            images:[{url:"https://picsum.photos/id/1031/500/400", alText:"Product 1"},]
+          _id: 2,
+          name: "Product 2",
+          price: 100,
+          originalPrice: 200,
+          discount: "50% OFF",
+          rating: 4.2,
+          fit: "REGULAR FIT",
+          images: [
+            { url: "https://picsum.photos/id/1031/500/400", altText: "Product 2" },
+          ],
         },
         {
-            _id:3,
-            name:"Product 3",
-            price:100,
-            images:[{url:"https://picsum.photos/id/1032/500/400", alText:"Product 1"},]
+          _id: 3,
+          name: "Product 3",
+          price: 100,
+          originalPrice: 200,
+          discount: "50% OFF",
+          rating: 4.3,
+          fit: "SLIM FIT",
+          images: [
+            { url: "https://picsum.photos/id/1032/500/400", altText: "Product 3" },
+          ],
         },
         {
-            _id:4,
-            name:"Product 4",
-            price:100,
-            images:[{url:"https://picsum.photos/id/1050/500/400", alText:"Product 1"},]
+          _id: 4,
+          name: "Product 4",
+          price: 100,
+          originalPrice: 200,
+          discount: "50% OFF",
+          rating: 4.0,
+          fit: "LOOSE FIT",
+          images: [
+            { url: "https://picsum.photos/id/1050/500/400", altText: "Product 4" },
+          ],
         },
-    ]
-
+      ];
+      
     const [mainImage, setMainImage] = useState("");
     const [selectedSize, setSelectedSize] = useState("");
     const [selectedColor, setSelectedColor] = useState("");
