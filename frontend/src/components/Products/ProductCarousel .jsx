@@ -60,7 +60,7 @@ function ProductCarousel({ products }) {
     >
       {!isLeftDisabled && (
         <button
-          className="absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 hover:bg-gray-100"
+          className="absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 hover:bg-gray-100 cursor-pointer"
           onClick={() => handleScroll('left')}
         >
           <ChevronLeft />
@@ -69,7 +69,7 @@ function ProductCarousel({ products }) {
 
       {!isRightDisabled && (
         <button
-          className="absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 hover:bg-gray-100"
+          className="absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 hover:bg-gray-100 cursor-pointer"
           onClick={() => handleScroll('right')}
         >
           <ChevronRight />
