@@ -49,8 +49,8 @@ function Navbar() {
 
           {/* Center Links (hidden on mobile) */}
           <div className="hidden md:flex space-x-6">
-            <Link to="/" className="text-gray-700 hover:text-black text-sm font-medium">MEN</Link>
-            <Link to="/" className="text-gray-700 hover:text-black text-sm font-medium">WOMEN</Link>
+            <Link to="/collections/all?gender=Men" className="text-gray-700 hover:text-black text-sm font-medium">MEN</Link>
+            <Link to="/collections/all?gender=Women" className="text-gray-700 hover:text-black text-sm font-medium">WOMEN</Link>
             <Link to="/" className="text-gray-700 hover:text-black text-sm font-medium">KIDS</Link>
           </div>
 
@@ -67,7 +67,7 @@ function Navbar() {
               <input type="text" placeholder="Search..." id="search" className="w-full p-1 text-sm bg-transparent outline-none" />
             </div>
             <div className="flex items-center space-x-4">
-              <Link to="/" className="text-gray-700 hover:text-black text-sm font-medium">LOGIN</Link>
+              <Link to="/login" className="text-gray-700 hover:text-black text-sm font-medium">LOGIN</Link>
               <Link to="/" className="relative text-gray-700 hover:text-black text-sm font-medium" id='cart'>
                 <svg id="cart" onClick={toogleCartDrawer} xmlns="http://www.w3.org/2000/svg" width="24" height="24" stroke="currentColor" fill="none" strokeWidth="2" className="lucide-shopping-cart">
                   <circle cx="8" cy="21" r="1" />
