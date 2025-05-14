@@ -38,7 +38,7 @@ function FilterSidebar() {
         "ChicStyle",
     ];
     const gender = ["Men","Women"];
-    const material = ["Cotton","Woolen","Silk","Polyster"];
+    const material = ["Cotton","Wool","Denim","Silk","Polyester","Linen","Viscose","Fleece"];
     
     useEffect(() => {
         const params = Object.fromEntries([...searchParams]);
