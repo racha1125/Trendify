@@ -21,7 +21,9 @@ function CollectionPage() {
         // Add Event Listener for Clicks
         document.addEventListener("mousedown", handleClickOutside);
         // Clean Event Listener
+        return () =>{
         document.removeEventListener("mousedown", handleClickOutside);
+        };
     })
     useEffect(() => {
         setTimeout(() => {
