@@ -10,8 +10,7 @@ function SortOptions() {
     };
   return (
     <div className='mb-4 flex items-center justify-end'>
-        <select 
-            name="" 
+        <select  
             id="sort"
             onChange={handleSortChange}
             value={searchParams.get("sortBy")|| ""} 
