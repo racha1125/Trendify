@@ -67,6 +67,7 @@ function Navbar() {
               <input type="text" placeholder="Search..." id="search" className="w-full p-1 text-sm bg-transparent outline-none" />
             </div>
             <div className="flex items-center space-x-4">
+              <Link to="/admin" className='block bg-black px-2 rounded text-sm text-white'>Admin</Link>
               <Link to="/login" className="text-gray-700 hover:text-black text-sm font-medium">LOGIN</Link>
               <Link to="/" className="relative text-gray-700 hover:text-black text-sm font-medium" id='cart'>
                 <svg id="cart" onClick={toogleCartDrawer} xmlns="http://www.w3.org/2000/svg" width="24" height="24" stroke="currentColor" fill="none" strokeWidth="2" className="lucide-shopping-cart">
