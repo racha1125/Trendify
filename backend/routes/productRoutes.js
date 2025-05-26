@@ -189,7 +189,7 @@ router.get("/", async (req, res) => {
         if(brand){
             query.brand = {$in: brand.split(",")};
         }
-        if(material){
+        if(size && size.toLocaleLowerCase() !== "all") {
             query.sizes = {$in: size.split(",")};
         }
         if(color) {
@@ -209,8 +209,6 @@ router.get("/", async (req, res) => {
             query.$or = [
                 {name: {$regex: search, $options: "i"}},
                 {description: {$regex: search, $options: "i"}},
-                {name: {$regex: search, $options: "i"}}
-                
             ];
         }
 

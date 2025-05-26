@@ -36,6 +36,236 @@ const products = [
         sku: "SP12345"
     },
     {
+    "name": "Classic White Shirt",
+    "description": "A timeless white shirt ideal for both formal and casual wear.",
+    "price": 49.99,
+    "discountedPrice": 34.99,
+    "countInStock": 70,
+    "category": "Top Wear",
+    "brand": "Elegance",
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": ["White"],
+    "collections": ["Formal Collection", "Best Sellers"],
+    "material": "Cotton Blend",
+    "gender": "Men",
+    "images": [
+      {
+        "url": "https://example.com/shirt-white1.jpg",
+        "altText": "Classic White Shirt Front"
+      },
+      {
+        "url": "https://example.com/shirt-white2.jpg",
+        "altText": "Classic White Shirt Back"
+      }
+    ],
+    "isFeatured": false,
+    "isPublished": true,
+    "rating": 4.5,
+    "numReviews": 80,
+    "tags": ["shirt", "white", "formal"],
+    "dimensions": {
+      "length": 12,
+      "width": 8,
+      "height": 2
+    },
+    "weight": 0.4,
+    "sku": "ELG1001"
+  },
+  {
+    "name": "Graphic Print Tee",
+    "description": "Trendy t-shirt featuring a vibrant graphic print. Made from eco-friendly fabric.",
+    "price": 35.99,
+    "discountedPrice": 25.99,
+    "countInStock": 150,
+    "category": "Top Wear",
+    "brand": "UrbanVibe",
+    "sizes": ["XS", "S", "M", "L", "XL"],
+    "colors": ["Black", "Yellow"],
+    "collections": ["Street Style", "New Arrivals"],
+    "material": "Organic Cotton",
+    "gender": "Unisex",
+    "images": [
+      {
+        "url": "https://example.com/graphic-tee1.jpg",
+        "altText": "Graphic Tee Front"
+      }
+    ],
+    "isFeatured": true,
+    "isPublished": true,
+    "rating": 4.7,
+    "numReviews": 120,
+    "tags": ["t-shirt", "graphic", "eco"],
+    "dimensions": {
+      "length": 11,
+      "width": 6,
+      "height": 2
+    },
+    "weight": 0.45,
+    "sku": "UVB2025"
+  },
+  {
+    "name": "Slim Fit Chinos",
+    "description": "Modern slim-fit chinos perfect for office or casual outings.",
+    "price": 59.99,
+    "discountedPrice": 44.99,
+    "countInStock": 60,
+    "category": "Bottom Wear",
+    "brand": "UrbanVibe",
+    "sizes": ["30", "32", "34", "36"],
+    "colors": ["Beige", "Navy Blue"],
+    "collections": ["Workwear", "Essentials"],
+    "material": "Cotton Stretch",
+    "gender": "Men",
+    "images": [
+      {
+        "url": "https://example.com/chinos1.jpg",
+        "altText": "Slim Fit Chinos"
+      }
+    ],
+    "isFeatured": true,
+    "isPublished": true,
+    "rating": 4.3,
+    "numReviews": 60,
+    "tags": ["pants", "chinos", "slim fit"],
+    "dimensions": {
+      "length": 40,
+      "width": 12,
+      "height": 2
+    },
+    "weight": 0.7,
+    "sku": "UVB3011"
+  },
+  {
+    "name": "Relaxed Fit Jeans",
+    "description": "Relaxed fit blue jeans with a classic denim wash.",
+    "price": 69.99,
+    "discountedPrice": 54.99,
+    "countInStock": 80,
+    "category": "Bottom Wear",
+    "brand": "DenimDays",
+    "sizes": ["28", "30", "32", "34", "36"],
+    "colors": ["Blue"],
+    "collections": ["Denim Collection", "Casuals"],
+    "material": "Denim",
+    "gender": "Unisex",
+    "images": [
+      {
+        "url": "https://example.com/jeans1.jpg",
+        "altText": "Relaxed Fit Jeans"
+      }
+    ],
+    "isFeatured": false,
+    "isPublished": true,
+    "rating": 4.6,
+    "numReviews": 102,
+    "tags": ["pants", "jeans", "denim"],
+    "dimensions": {
+      "length": 42,
+      "width": 14,
+      "height": 2
+    },
+    "weight": 0.8,
+    "sku": "DDJ4001"
+  },
+  {
+    "name": "Athletic Jogger Pants",
+    "description": "Lightweight, breathable joggers designed for maximum comfort and flexibility.",
+    "price": 39.99,
+    "discountedPrice": 27.99,
+    "countInStock": 50,
+    "category": "Bottom Wear",
+    "brand": "ActivePro",
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": ["Black", "Grey"],
+    "collections": ["Sportswear", "Summer Collection"],
+    "material": "Polyester Blend",
+    "gender": "Unisex",
+    "images": [
+      {
+        "url": "https://example.com/joggers1.jpg",
+        "altText": "Athletic Jogger Pants"
+      }
+    ],
+    "isFeatured": false,
+    "isPublished": true,
+    "rating": 4.2,
+    "numReviews": 38,
+    "tags": ["pants", "joggers", "athletic"],
+    "dimensions": {
+      "length": 39,
+      "width": 11,
+      "height": 2
+    },
+    "weight": 0.5,
+    "sku": "APJ1234"
+  },
+  {
+    "name": "Floral Print Shirt",
+    "description": "Bright floral print shirt ideal for summer outings.",
+    "price": 44.99,
+    "discountedPrice": 32.99,
+    "countInStock": 65,
+    "category": "Top Wear",
+    "brand": "TropicStyle",
+    "sizes": ["M", "L", "XL"],
+    "colors": ["White", "Pink"],
+    "collections": ["Summer Collection"],
+    "material": "Rayon",
+    "gender": "Men",
+    "images": [
+      {
+        "url": "https://example.com/floral-shirt1.jpg",
+        "altText": "Floral Print Shirt"
+      }
+    ],
+    "isFeatured": true,
+    "isPublished": true,
+    "rating": 4.1,
+    "numReviews": 25,
+    "tags": ["shirt", "floral", "summer"],
+    "dimensions": {
+      "length": 13,
+      "width": 9,
+      "height": 2
+    },
+    "weight": 0.35,
+    "sku": "TSF2024"
+  },
+  {
+    "name": "Cargo Utility Pants",
+    "description": "Multi-pocket cargo pants for functional everyday wear.",
+    "price": 64.99,
+    "discountedPrice": 49.99,
+    "countInStock": 40,
+    "category": "Bottom Wear",
+    "brand": "RuggedGear",
+    "sizes": ["M", "L", "XL"],
+    "colors": ["Olive", "Khaki"],
+    "collections": ["Outdoor", "Essentials"],
+    "material": "Cotton Twill",
+    "gender": "Men",
+    "images": [
+      {
+        "url": "https://example.com/cargo1.jpg",
+        "altText": "Cargo Utility Pants"
+      }
+    ],
+    "isFeatured": false,
+    "isPublished": true,
+    "rating": 4.0,
+    "numReviews": 18,
+    "tags": ["pants", "cargo", "utility"],
+    "dimensions": {
+      "length": 41,
+      "width": 14,
+      "height": 3
+    },
+    "weight": 0.9,
+    "sku": "RGU9999"
+  },
+
+
+    {
         name: "Red Hoodie",
         description: "A warm red hoodie perfect for winter.",
         price: 49.99,
