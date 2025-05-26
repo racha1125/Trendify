@@ -19,15 +19,11 @@ router.post("/register", async (req, res) => {
             return res.status(400).json({ message: "User already exists" });
         }
 
-        // Hash password
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password, salt);
-
         // Create and save user
         user = new User({
             name,
             email,
-            password: hashedPassword
+            password
         });
 
         await user.save();
@@ -119,7 +115,7 @@ router.post("/login", async (req, res) => {
 
 // @route   GET /api/users/profile
 // @desc    Get user profile (protected route)
-// // @access  Private
+// @access  Private
 router.get("/profile", protect, async (req, res) => {
     res.json(req.user);
 });
