@@ -1,10 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import stylishJacket from '../../assets/stylish_jacket.webp';
-import casualSneakers from '../../assets/casual-sneakers.webp';
-import elegantDress from '../../assets/elegant-dress.jpg';
-import trendyBackpack from '../../assets/trendy-backpack.webp';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function NewArrivals() {
   const scrollRef = useRef(null);
@@ -12,12 +9,21 @@ function NewArrivals() {
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
 
-  const newArrivals = [
-    { _id: "1", name: "Stylish Jacket", price: 120, image: stylishJacket, altText: "Stylish Jacket" },
-    { _id: "2", name: "Casual Sneakers", price: 800, image: casualSneakers, altText: "Casual Sneakers" },
-    { _id: "3", name: "Elegant Dress", price: 150, image: elegantDress, altText: "Elegant Dress" },
-    { _id: "4", name: "Trendy Backpack", price: 200, image: trendyBackpack, altText: "Trendy Backpack" },
-  ];
+  const [newArrivals, setNewArrivals] = useState([]);
+  useEffect(() => {
+    const fetchNewArrivals = async () => {
+      try{
+        const response = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/api/products/new-arrivals`
+        );
+        setNewArrivals(response.data);
+        console.log("New arrivals fetched:", response.data);
+      }catch (error) {
+        console.error("Error fetching new arrivals:", error);
+      }
+    };
+    fetchNewArrivals();
+  }, []);
 
   const ITEM_WIDTH = isMobile ? 300 : 300;
   const ITEMS_PER_SCROLL = isMobile ? 1 : 3;
@@ -45,7 +51,7 @@ function NewArrivals() {
       updateScrollButtons(); // Initial check
       return () => container.removeEventListener('scroll', updateScrollButtons);
     }
-  }, []);
+  }, [newArrivals]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -89,23 +95,24 @@ function NewArrivals() {
           }}
         >
           {newArrivals.map((product) => (
-            <div
+            <Link
               key={product._id}
-              className="flex-none w-full sm:w-[calc(100%-2rem)] md:w-[calc(33.33%-1.5rem)] relative"
+              to={`/product/${product._id}`}
+              className="flex-none w-full sm:w-[calc(100%-2rem)] md:w-[calc(33.33%-1.5rem)] relative group focus:outline-none"
+              tabIndex={0}
+              aria-label={`View details for ${product.name}`}
             >
               <img
-                src={product.image}
+                src={product.images[0].url}
                 alt={product.altText}
-                className="w-full h-[500px] object-cover rounded-lg"
+                className="w-full h-[500px] object-cover rounded-lg group-hover:opacity-90 transition"
                 draggable="false"
               />
-              <div className="absolute bottom-0 left-0 right-0 backdrop-blur-xs text-black p-4 rounded-b-lg">
-                <Link to={`/product/${product._id}`} className="block">
-                  <h4 className="font-medium">{product.name}</h4>
-                  <p className="mt-1">${product.price}</p>
-                </Link>
+              <div className="absolute bottom-0 left-0 right-0 backdrop-blur-3xl text-black p-4 rounded-b-lg bg-white/70 group-hover:bg-white/90 transition">
+                <h4 className="font-medium">{product.name}</h4>
+                <p className="mt-1">${product.price}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
