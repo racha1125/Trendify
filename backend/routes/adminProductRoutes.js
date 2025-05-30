@@ -5,6 +5,8 @@ const { protect, admin } = require('../middleware/authMiddleware');
 const router = express.Router();
 
 // @route   GET /api/admin/products
+// @desc  Get all products (Admin only)
+// @access Private/Admin
 router.get('/', protect, admin, async (req, res) => {
     try {
         const products = await Product.find({});
@@ -16,6 +18,8 @@ router.get('/', protect, admin, async (req, res) => {
 });
 
 // @route   POST /api/admin/products
+// @desc  Create a new product (Admin only)
+// @access Private/Admin
 router.post('/', protect, admin, async (req, res) => {
     try {
         const product = new Product({
@@ -31,6 +35,8 @@ router.post('/', protect, admin, async (req, res) => {
 });
 
 // @route   PUT /api/admin/products/:id
+// @desc  Update a product (Admin only)
+// @access Private/Admin
 router.put('/:id', protect, admin, async (req, res) => {
     try {
         if (req.body.images && Array.isArray(req.body.images)) {
@@ -60,6 +66,8 @@ router.put('/:id', protect, admin, async (req, res) => {
 });
 
 // @route   DELETE /api/admin/products/:id
+// @desc  Delete a product (Admin only)
+// @access Private/Admin
 router.delete('/:id', protect, admin, async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
