@@ -2,12 +2,21 @@ import React from 'react'
 import { IoMdClose } from 'react-icons/io';
 import CartContents from '../Cart/CartContents';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function CartDrawer({ drawerOpen, toogleCartDrawer }) {
   const navigate = useNavigate();
+  const {user, guestId} = useSelector((state) => state.auth);
+  const { cart } = useSelector((state) => state.cart);
+  const userId = user ?user._id : null;
+
   const handleCheckout = () => {
     toogleCartDrawer();
-    navigate("/checkout");
+    if(!user){
+      navigate("/login?redirect=checkout");
+    }else{
+      navigate("/checkout");
+    }
   };
 
   return (
@@ -26,14 +35,23 @@ function CartDrawer({ drawerOpen, toogleCartDrawer }) {
           <button onClick={toogleCartDrawer} className='mt-4 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300'>Continue Shopping</button>
         </div> */}
         {/* Cart components */}
-        <CartContents/>
+        {cart && cart?.products?.length > 0 ? (
+          <CartContents cart={cart} userId={userId} guestId={guestId}/>
+        ) : (
+          <p>Your cart is empty.</p>
+        )}
+        
       </div>
       {/* Check Out Button */}
       <div className='p-4 bg-white sticky bottom-0'>
-        <button onClick={handleCheckout} className='w-full bg-black text-white py-2 rounded-lg font-semibold hover:bg-gray-800 cursor-pointer' >Checkout</button>
-        <p>
-          Shipping, taxes, and discounts will be calculated at checkout.
-        </p>
+        {cart && cart?.products?.length > 0 && (
+          <>
+            <button onClick={handleCheckout} className='w-full bg-black text-white py-2 rounded-lg font-semibold hover:bg-gray-800 cursor-pointer' >Checkout</button>
+            <p>
+              Shipping, taxes, and discounts will be calculated at checkout.
+            </p>
+          </>
+        )}
       </div>
     </div>
   );
