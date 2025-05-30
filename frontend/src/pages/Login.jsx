@@ -1,12 +1,46 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import {loginUser} from '../redux/slices/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { mergeCart } from '../redux/slices/cartSlice';
+
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const {user, guestId} = useSelector((state) => state.auth);
+    const {cart} = useSelector((state) => state.cart);
+
+    // Get redirect parameter and check if it's checkout or somenthing else
+    const redirect = new URLSearchParams(location.search).get('redirect') || "/";
+    const isCheckoutRedirect = redirect.includes("checkout");
+
+    useEffect(() => {
+        if (user){
+            if(cart?.products.length > 0 && guestId) {
+                dispatch(mergeCart({ guestId, user })).then(()=>{
+                    navigate(isCheckoutRedirect ? "/checkout" : "/");
+                });
+            } else{
+                navigate(isCheckoutRedirect ? "/checkout" : "/");
+            }
+        }
+    }, [user, cart, guestId, dispatch, navigate, redirect, isCheckoutRedirect]);
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("User Login:", {email, password})
+        // console.log("User Login:", {email, password})
+        dispatch(loginUser({ userData: { email, password } }))
+            .unwrap()
+            .then((user) => {
+                console.log("Login successful:", user);
+            })
+            .catch((error) => {
+                console.error("Login failed:", error);
+            });
     }
   return (
     <div className='flex'>
@@ -42,7 +76,7 @@ function Login() {
                 </button>
                 <p className='mt-6 text-center text-sm'>
                     Don't have an account?{""}
-                    <Link to="/register" className='text-blue-500'> Register</Link>
+                    <Link to={`/register?redirect=${encodeURIComponent(redirect)}`}className='text-blue-500'> Register</Link>
                 </p>
             </form>
         </div>
