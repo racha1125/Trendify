@@ -9,12 +9,12 @@ function PaypalButton({amount, onSuccess, onError}) {
       }}
     >
       <PayPalButtons  
-        style={{ layout: "vertical" }}
+        style={{ layout: "vertical" }}  
         createOrder={(data, actions) => {
             return actions.order.create({
                 purchase_units: [{
                     amount: {
-                      value: amount,
+                      value: parseFloat(amount).toFixed(2), // ensure amount is a string with 2 decimal places
                       currency_code: "USD"  // also add currency_code here
                     }
                 }],
