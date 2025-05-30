@@ -2,9 +2,15 @@ import {Link, NavLink} from "react-router-dom";
 import {FaBoxOpen, FaClipboardList, FaSignOutAlt, FaStore, FaUser} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { HandHelping } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/slices/authSlice";
+import { clearCart } from "../../redux/slices/cartSlice";
 function AdminSidebar() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const handleLogout = () => {
+        dispatch(logout());
+        dispatch(clearCart());
         navigate("/");
     }
   return (
