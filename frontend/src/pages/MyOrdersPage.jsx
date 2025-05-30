@@ -1,44 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { fetchUserOrders } from '../redux/slices/orderSlice';
 
 function MyOrdersPage() {
-    const [orders,setOrders] = useState([]);
     const navigate = useNavigate();
-    useEffect(()=> {
-        setTimeout(() =>{
-            const mockOrders = [
-                {
-                    _id: "1234",
-                    createdAt: new Date(),
-                    shippingAdress: {city:"New York",country: "USA"},
-                    orderItems:[
-                        {
-                            name: "Product 1",
-                            image:"https://picsum.photos/id/1040/500/500"
-                        },
-                    ],
-                    totalPrice: 200,
-                    isPaid: true,
-                },
-                {
-                    _id: "3456",
-                    createdAt: new Date(),
-                    shippingAdress: {city:"New York",country: "USA"},
-                    orderItems:[
-                        {
-                            name: "Product 2",
-                            image:"https://picsum.photos/id/1060/500/500"
-                        },
-                    ],
-                    totalPrice: 300,
-                    isPaid: true,
-                },
-            ];
-            setOrders(mockOrders);
-        },1000);
-    },[]);
+    const dispatch = useDispatch();
+    const {orders, loading, error} = useSelector((state) => state.orders);
+
+    useEffect(() => {
+        dispatch(fetchUserOrders());
+    }, [dispatch]);
+
     const handleRowClick = (orderId) => {
         navigate(`/order/${orderId}`);
+    };
+    if(loading){
+        return <div className='text-center text-gray-500'>Loading...</div>;
+    }
+    if(error){
+        return <div className='text-center text-red-500'>{error}</div>;
     }
   return (
     <div className='max-w-7xl mx-auto p-4 sm:p-6'>
