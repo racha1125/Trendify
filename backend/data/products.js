@@ -11,14 +11,14 @@ const products = [
         colors: ["Red", "Blue", "Green"],
         collections: ["Summer Collection", "New Arrivals"],
         material: "Cotton",
-        gender: "Unisex",
+        gender: "Men",
         images: [
             {
-                url: "https://example.com/image1.jpg",
+                url: "https://hummel.net.in/cdn/shop/products/ascon-men-blue-t-shirts-2.jpg?v=1747505400",
                 altText: "Image 1"
             },
             {
-                url: "https://example.com/image2.jpg",
+                url: "https://hummel.net.in/cdn/shop/products/ascon-men-blue-t-shirts-4.jpg?v=1747505400",
                 altText: "Image 2"
             }
         ],
@@ -36,236 +36,258 @@ const products = [
         sku: "SP12345"
     },
     {
-    "name": "Classic White Shirt",
-    "description": "A timeless white shirt ideal for both formal and casual wear.",
-    "price": 49.99,
-    "discountedPrice": 34.99,
-    "countInStock": 70,
-    "category": "Top Wear",
-    "brand": "Elegance",
-    "sizes": ["S", "M", "L", "XL"],
-    "colors": ["White"],
-    "collections": ["Formal Collection", "Best Sellers"],
-    "material": "Cotton Blend",
-    "gender": "Men",
-    "images": [
+    name: "Classic White Shirt",
+    description: "A timeless white shirt ideal for both formal and casual wear.",
+    price: 49.99,
+    discountedPrice: 34.99,
+    countInStock: 70,
+    category: "Top Wear",
+    brand: "Elegance",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["White"],
+    collections: ["Formal Collection", "Best Seller"],
+    material: "Cotton",
+    gender: "Men",
+    images: [
       {
-        "url": "https://example.com/shirt-white1.jpg",
-        "altText": "Classic White Shirt Front"
+        url: "https://shapingnewtomorrow.com/cdn/shop/files/ClassicShirt_White_1_5cd5bf10-af18-4d0b-a477-bc3422d8401a.jpg?crop=region&crop_height=1788&crop_left=2&crop_top=0&crop_width=1377&height=1662&v=1729522712&width=1280",
+        altText: "Image 1"
       },
       {
-        "url": "https://example.com/shirt-white2.jpg",
-        "altText": "Classic White Shirt Back"
+        url: "https://shapingnewtomorrow.com/cdn/shop/files/ClassicShirt_White_3_a70c6f4d-33b0-4b2c-9f31-16b8296f082e.jpg?v=1729522711&width=1024&height=1329&crop=center",
+        altText: "Image 2"
       }
     ],
-    "isFeatured": false,
-    "isPublished": true,
-    "rating": 4.5,
-    "numReviews": 80,
-    "tags": ["shirt", "white", "formal"],
-    "dimensions": {
-      "length": 12,
-      "width": 8,
-      "height": 2
+    isFeatured: false,
+    isPublished: true,
+    rating: 4.5,
+    numReviews: 80,
+    tags: ["shirt", "white", "formal"],
+    dimensions: {
+      length: 12,
+      width: 8,
+      height: 2
     },
-    "weight": 0.4,
-    "sku": "ELG1001"
+    weight: 0.4,
+    sku: "ELG1001"
   },
   {
-    "name": "Graphic Print Tee",
-    "description": "Trendy t-shirt featuring a vibrant graphic print. Made from eco-friendly fabric.",
-    "price": 35.99,
-    "discountedPrice": 25.99,
-    "countInStock": 150,
-    "category": "Top Wear",
-    "brand": "UrbanVibe",
-    "sizes": ["XS", "S", "M", "L", "XL"],
-    "colors": ["Black", "Yellow"],
-    "collections": ["Street Style", "New Arrivals"],
-    "material": "Organic Cotton",
-    "gender": "Unisex",
-    "images": [
+    name: "Graphic Print Tee",
+    description: "Trendy t-shirt featuring a vibrant graphic print. Made from eco-friendly fabric.",
+    price: 35.99,
+    discountedPrice: 25.99,
+    countInStock: 150,
+    category: "Top Wear",
+    brand: "UrbanVibe",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: ["Black", "Yellow"],
+    collections: ["Street Style", "New Arrivals"],
+    material: "Cotton",
+    gender: "Unisex",
+    images: [
       {
-        "url": "https://example.com/graphic-tee1.jpg",
-        "altText": "Graphic Tee Front"
+        url: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcR10LHhmJNHU9wFktMzqMWSQ3ZKVjPl_snpNtJ7V4z8D-Dgu2o51pKIS13JAnHEhcCcQjch8ArYdDn-N015BD190yOIPK67dCitFSG7xQ4",
+        altText: "Image 1"
+      },
+      {
+        url: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQIFDdP30e1SelUwHo5ZmFKPmjg-dAUzzA4j5GZKfRg-p13IxGZdyJotkZZFvloh2l-7Pe7ifV6OL-AYWUg4tmhRwGXSLyVRarbtzRG6pYc",
+        altText: "Image 2"
       }
     ],
-    "isFeatured": true,
-    "isPublished": true,
-    "rating": 4.7,
-    "numReviews": 120,
-    "tags": ["t-shirt", "graphic", "eco"],
-    "dimensions": {
-      "length": 11,
-      "width": 6,
-      "height": 2
+    isFeatured: true,
+    isPublished: true,
+    rating: 4.7,
+    numReviews: 120,
+    tags: ["t-shirt", "graphic", "eco"],
+    dimensions: {
+      length: 11,
+      width: 6,
+      height: 2
     },
-    "weight": 0.45,
-    "sku": "UVB2025"
+    weight: 0.45,
+    sku: "UVB2025"
   },
   {
-    "name": "Slim Fit Chinos",
-    "description": "Modern slim-fit chinos perfect for office or casual outings.",
-    "price": 59.99,
-    "discountedPrice": 44.99,
-    "countInStock": 60,
-    "category": "Bottom Wear",
-    "brand": "UrbanVibe",
-    "sizes": ["30", "32", "34", "36"],
-    "colors": ["Beige", "Navy Blue"],
-    "collections": ["Workwear", "Essentials"],
-    "material": "Cotton Stretch",
-    "gender": "Men",
-    "images": [
+    name: "Slim Fit Chinos",
+    description: "Modern slim-fit chinos perfect for office or casual outings.",
+    price: 59.99,
+    discountedPrice: 44.99,
+    countInStock: 60,
+    category: "Bottom Wear",
+    brand: "UrbanVibe",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["Beige", "Navy Blue"],
+    collections: ["Workwear", "Essentials"],
+    material: "Cotton",
+    gender: "Men",
+    images: [
       {
-        "url": "https://example.com/chinos1.jpg",
-        "altText": "Slim Fit Chinos"
+        url: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQAch_iFzmkqmnh6Nbbq5C9koGSlk6yIGhHdlJGIGdL2dsuBJXA204BYgsVJ0QlZ7JzIZJuN-d3yZsSjoabcAsuZ5xrG9xqTDl5fKLsZA4C3jUpHvKf0sPwzg",
+        altText: "Image 1"
+      },
+      {
+        url: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcR_NpPqulN0kFn1cjZgfZjajvkEAMpVIpmZlde6lWcaGruv9jjWtR85uFzr0a7gP6aOH-_iUul3FhemSni4Z47jsY_5hEPyJcH0520DcWg20dTNRMti2IIz",
+        altText: "Image 2"
       }
     ],
-    "isFeatured": true,
-    "isPublished": true,
-    "rating": 4.3,
-    "numReviews": 60,
-    "tags": ["pants", "chinos", "slim fit"],
-    "dimensions": {
-      "length": 40,
-      "width": 12,
-      "height": 2
+    isFeatured: true,
+    isPublished: true,
+    rating: 4.3,
+    numReviews: 60,
+    tags: ["pants", "chinos", "slim fit"],
+    dimensions: {
+      length: 40,
+      width: 12,
+      height: 2
     },
-    "weight": 0.7,
-    "sku": "UVB3011"
+    weight: 0.7,
+    sku: "UVB3011"
   },
   {
-    "name": "Relaxed Fit Jeans",
-    "description": "Relaxed fit blue jeans with a classic denim wash.",
-    "price": 69.99,
-    "discountedPrice": 54.99,
-    "countInStock": 80,
-    "category": "Bottom Wear",
-    "brand": "DenimDays",
-    "sizes": ["28", "30", "32", "34", "36"],
-    "colors": ["Blue"],
-    "collections": ["Denim Collection", "Casuals"],
-    "material": "Denim",
-    "gender": "Unisex",
-    "images": [
+    name: "Relaxed Fit Jeans",
+    description: "Relaxed fit blue jeans with a classic denim wash.",
+    price: 69.99,
+    discountedPrice: 54.99,
+    countInStock: 80,
+    category: "Bottom Wear",
+    brand: "DenimDays",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["Blue"],
+    collections: ["Denim Collection", "Casuals"],
+    material: "Denim",
+    gender: "Unisex",
+    images: [
       {
-        "url": "https://example.com/jeans1.jpg",
-        "altText": "Relaxed Fit Jeans"
+        url: "https://images.bestsellerclothing.in/data/JJ/17-dec-2024/901406401_g6.jpg?width=1080&height=1355&mode=fill&fill=blur&format=auto",
+        altText: "Image 1"
+      },
+      {
+        url: "https://images.bestsellerclothing.in/data/JJ/17-dec-2024/901403901_g6.jpg?width=1080&height=1355&mode=fill&fill=blur&format=auto",
+        altText: "Image 2"
       }
     ],
-    "isFeatured": false,
-    "isPublished": true,
-    "rating": 4.6,
-    "numReviews": 102,
-    "tags": ["pants", "jeans", "denim"],
-    "dimensions": {
-      "length": 42,
-      "width": 14,
-      "height": 2
+    isFeatured: false,
+    isPublished: true,
+    rating: 4.6,
+    numReviews: 102,
+    tags: ["pants", "jeans", "denim"],
+    dimensions: {
+      length: 42,
+      width: 14,
+      height: 2
     },
-    "weight": 0.8,
-    "sku": "DDJ4001"
+    weight: 0.8,
+    sku: "DDJ4001"
   },
   {
-    "name": "Athletic Jogger Pants",
-    "description": "Lightweight, breathable joggers designed for maximum comfort and flexibility.",
-    "price": 39.99,
-    "discountedPrice": 27.99,
-    "countInStock": 50,
-    "category": "Bottom Wear",
-    "brand": "ActivePro",
-    "sizes": ["S", "M", "L", "XL"],
-    "colors": ["Black", "Grey"],
-    "collections": ["Sportswear", "Summer Collection"],
-    "material": "Polyester Blend",
-    "gender": "Unisex",
-    "images": [
+    name: "Athletic Jogger Pants",
+    description: "Lightweight, breathable joggers designed for maximum comfort and flexibility.",
+    price: 39.99,
+    discountedPrice: 27.99,
+    countInStock: 50,
+    category: "Bottom Wear",
+    brand: "ActivePro",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["Black", "Grey"],
+    collections: ["Sportswear", "Summer Collection"],
+    material: "Polyester",
+    gender: "Unisex",
+    images: [
       {
-        "url": "https://example.com/joggers1.jpg",
-        "altText": "Athletic Jogger Pants"
+        url: "https://americantall.com/cdn/shop/files/American-Tall-Women-Basics-Athletic-Jogger-Black-front.jpg?v=1706735469",
+        altText: "Image 1"
+      },
+      {
+        url: "https://assets.ajio.com/medias/sys_master/root/20221015/19O0/634a5eaeaeb269659c47008e/-473Wx593H-469241049-jetblack-MODEL.jpg",
+        altText: "Image 2"
       }
     ],
-    "isFeatured": false,
-    "isPublished": true,
-    "rating": 4.2,
-    "numReviews": 38,
-    "tags": ["pants", "joggers", "athletic"],
-    "dimensions": {
-      "length": 39,
-      "width": 11,
-      "height": 2
+    isFeatured: false,
+    isPublished: true,
+    rating: 4.2,
+    numReviews: 38,
+    tags: ["pants", "joggers", "athletic"],
+    dimensions: {
+      length: 39,
+      width: 11,
+      height: 2
     },
-    "weight": 0.5,
-    "sku": "APJ1234"
+    weight: 0.5,
+    sku: "APJ1234"
   },
   {
-    "name": "Floral Print Shirt",
-    "description": "Bright floral print shirt ideal for summer outings.",
-    "price": 44.99,
-    "discountedPrice": 32.99,
-    "countInStock": 65,
-    "category": "Top Wear",
-    "brand": "TropicStyle",
-    "sizes": ["M", "L", "XL"],
-    "colors": ["White", "Pink"],
-    "collections": ["Summer Collection"],
-    "material": "Rayon",
-    "gender": "Men",
-    "images": [
+    name: "Floral Print Shirt",
+    description: "Bright floral print shirt ideal for summer outings.",
+    price: 44.99,
+    discountedPrice: 32.99,
+    countInStock: 65,
+    category: "Top Wear",
+    brand: "TropicStyle",
+    sizes: ["M", "L", "XL"],
+    colors: ["White", "Pink"],
+    collections: ["Summer Collection"],
+    material: "Rayon",
+    gender: "Men",
+    images: [
       {
-        "url": "https://example.com/floral-shirt1.jpg",
-        "altText": "Floral Print Shirt"
+        url: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRclJZ6xCEJpbW_P2_dDcPC2fATVOZ_rOIK2wuim5CCLkus6_ananvitNTNEc7CWKZCuPhk3dpA5j9o6MbistYh3Afiqkl8gm5J87NQjbavQtWmH1-KSX4u",
+        altText: "Image 1"
+      },
+      {
+        url: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRjlAu-nr4TknwsSX68V2Gpf92Xsz3Qr8lSeveG3zqAW2dQQmfgd6TyrRPcxGheb4bpVx0ChJu45eF_HMoRfYI3A7LkzNZ9wm0_FSjHuhHF",
+        altText: "Image 2"
       }
     ],
-    "isFeatured": true,
-    "isPublished": true,
-    "rating": 4.1,
-    "numReviews": 25,
-    "tags": ["shirt", "floral", "summer"],
-    "dimensions": {
-      "length": 13,
-      "width": 9,
-      "height": 2
+    isFeatured: true,
+    isPublished: true,
+    rating: 4.1,
+    numReviews: 25,
+    tags: ["shirt", "floral", "summer"],
+    dimensions: {
+      length: 13,
+      width: 9,
+      height: 2
     },
-    "weight": 0.35,
-    "sku": "TSF2024"
+    weight: 0.35,
+    sku: "TSF2024"
   },
   {
-    "name": "Cargo Utility Pants",
-    "description": "Multi-pocket cargo pants for functional everyday wear.",
-    "price": 64.99,
-    "discountedPrice": 49.99,
-    "countInStock": 40,
-    "category": "Bottom Wear",
-    "brand": "RuggedGear",
-    "sizes": ["M", "L", "XL"],
-    "colors": ["Olive", "Khaki"],
-    "collections": ["Outdoor", "Essentials"],
-    "material": "Cotton Twill",
-    "gender": "Men",
-    "images": [
+    name: "Cargo Utility Pants",
+    description: "Multi-pocket cargo pants for functional everyday wear.",
+    price: 64.99,
+    discountedPrice: 49.99,
+    countInStock: 40,
+    category: "Bottom Wear",
+    brand: "RuggedGear",
+    sizes: ["M", "L", "XL"],
+    colors: ["Olive", "Khaki"],
+    collections: ["Outdoor", "Essentials"],
+    material: "Cotton",
+    gender: "Men",
+    images: [
       {
-        "url": "https://example.com/cargo1.jpg",
-        "altText": "Cargo Utility Pants"
+        url: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSqVMjHOPSd4tOUUQ3jjDct75FqoRvRf3YJmi2c319EgQVA4P7oL0xGbgE1dGbev8RaUsvD0Wf9g6ugMcrIrXH52_PqUJsEYESJPX24Co8SK3KNcjNYvbkz",
+        altText: "Image 1"
+      },
+      {
+        url: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTzqvsU3VCJSmQu6-Au260zAl2u_5LH0hx4oiGaFsoJEFJRk_fOohMOH-uN3R3dO5tJxezTwsYlYOMSTcTk_iAobU6uNdgeyUPrCj2WA2Fk",
+        altText: "Image 2"
       }
     ],
-    "isFeatured": false,
-    "isPublished": true,
-    "rating": 4.0,
-    "numReviews": 18,
-    "tags": ["pants", "cargo", "utility"],
-    "dimensions": {
-      "length": 41,
-      "width": 14,
-      "height": 3
+    isFeatured: false,
+    isPublished: true,
+    rating: 4.0,
+    numReviews: 18,
+    tags: ["pants", "cargo", "utility"],
+    dimensions: {
+      length: 41,
+      width: 14,
+      height: 3
     },
-    "weight": 0.9,
-    "sku": "RGU9999"
+    weight: 0.9,
+    sku: "RGU9999"
   },
-
-
-    {
+  {
         name: "Red Hoodie",
         description: "A warm red hoodie perfect for winter.",
         price: 49.99,
@@ -280,11 +302,11 @@ const products = [
         gender: "Unisex",
         images: [
             {
-                url: "https://example.com/image3.jpg",
+                url: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTlwqcNRRjPHOtVFlasBsZeK7f-5UOk71qMj6UCEOE0Mi45LfT1TKMydUByNSU6Kj8HrydjQBO9MUzSetZvgEeMXuhEx5NV",
                 altText: "Image 3"
             },
             {
-                url: "https://example.com/image4.jpg",
+                url: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTeKewtzC0gptEnP2FquOSBQ0gOOLm073ivfDNYzfQNBgRgByCOfU1D9gn2Cdk_2w5K73UZW8qsYJZ43qfh5Rf-eau_Xl8pDT53Mtuh-urDhNMoogxwOnkp",
                 altText: "Image 4"
             }
         ],
@@ -316,11 +338,11 @@ const products = [
         gender: "Unisex",
         images: [
             {
-                url: "https://example.com/image5.jpg",
+                url: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcScobxtTFG0lY2akXWj6NFSJZeIfaUqmyylYaP8vi5oQfjg4IklJDgDFFiR9HuklnwEUw6PaI181MH445-uSkuJo4baudeSl_yNTQGoFzFUr8OemwbfSB8UxA",
                 altText: "Image 5"
             },
             {
-                url: "https://example.com/image6.jpg",
+                url: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQ47hI0Pgaei_BsaAvQ6JcMsvfCu37SpPSoH1Hq8We90m9lMnZ6xKix_JB1FT65wGCQyquT4iRC33rodXJ67TiCrdS5sQ8tK32nb5RTZg45CWm6k-EC6_MiwA",
                 altText: "Image 6"
             }
         ],
@@ -352,11 +374,11 @@ const products = [
         gender: "Unisex",
         images: [
             {
-                url: "https://example.com/image7.jpg",
+                url: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQuqLkZR-iatfCH1DSqFzZ9WBuvoNp-xlbgJzQZxmepEHKCNaBCckPpn1GfBUoiJ9pIq0Ud_DGUNlrdgBn3NWrQ3cSvMa2G56G0QkHDSPi4E90m1ArBvp2hsg",
                 altText: "Image 7"
             },
             {
-                url: "https://example.com/image8.jpg",
+                url: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQY02UoLnZ0eDc2oh9cP4KCm4IPlQHK39iKDAkOWth5yVjVApoH4N-XAWMixiJ8MooBwUc9h0_xi46fSrXc3HJ_m-CNzJGQZEn6nKtmk4my4AgIhKEl_RAW",
                 altText: "Image 8"
             }
         ],
@@ -388,11 +410,11 @@ const products = [
         gender: "Unisex",
         images: [
             {
-                url: "https://example.com/image9.jpg",
+                url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCRHwBBYlyMe_-ufWV8on3-PlZ0YVmKZ1w7w&s",
                 altText: "Image 9"
             },
             {
-                url: "https://example.com/image10.jpg",
+                url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCRHwBBYlyMe_-ufWV8on3-PlZ0YVmKZ1w7w&s",
                 altText: "Image 10"
             }
         ],
