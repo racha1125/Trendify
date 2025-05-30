@@ -430,7 +430,303 @@ const products = [
         },
         weight: 0.3,
         sku: "SP12349"
-    }
+    },
+     {
+    name: "Women's Blouse",
+    description: "Elegant chiffon blouse with ruffle sleeves, perfect for casual or office wear.",
+    price: 39.99,
+    discountedPrice: 29.99,
+    countInStock: 85,
+    category: "Top Wear",
+    brand: "FemmeChic",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["Peach", "White", "Navy"],
+    collections: ["Spring Collection", "Office Wear"],
+    material: "Chiffon",
+    gender: "Women",
+    images: [
+      {
+        url: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/12140734/2020/11/18/9e9f1a80-2f4f-4278-aa7a-ae7e9d2a27c01605694778920-Roadster-Women-Shirts-5851605694777221-1.jpg",
+        altText: "Image 1"
+      },
+      {
+        url: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/12140734/2020/11/18/1c5d8b4b-7b8e-4a6f-9ad5-a68d8f3e15b31605694778899-Roadster-Women-Shirts-5851605694777221-2.jpg",
+        altText: "Image 2"
+      }
+    ],
+    isFeatured: false,
+    isPublished: true,
+    rating: 4.3,
+    numReviews: 70,
+    tags: ["blouse", "top", "women"],
+    dimensions: { length: 12, width: 8, height: 1 },
+    weight: 0.3,
+    sku: "FC1002"
+  },
+  // Women's Bottom Wear
+  {
+    name: "Pleated Midi Skirt",
+    description: "Graceful pleated skirt with a comfortable elastic waistband.",
+    price: 44.99,
+    discountedPrice: 34.99,
+    countInStock: 60,
+    category: "Bottom Wear",
+    brand: "FemmeChic",
+    sizes: ["S", "M", "L"],
+    colors: ["Pink", "Black", "Emerald"],
+    collections: ["Spring Collection"],
+    material: "Polyester",
+    gender: "Women",
+    images: [
+      {
+        url: "https://img.ltwebstatic.com/images3_pi/2022/10/17/1665990233a6ec6764b86b5e9c8e6e2a5b6f2c6c96_thumbnail_900x.webp",
+        altText: "Image 1"
+      },
+      {
+        url: "https://img.ltwebstatic.com/images3_pi/2022/10/17/166599023399a6d5b73d3d0c9b4e4e8fae6b8ebae3_thumbnail_900x.webp",
+        altText: "Image 2"
+      }
+    ],
+    isFeatured: true,
+    isPublished: true,
+    rating: 4.6,
+    numReviews: 34,
+    tags: ["skirt", "pleated", "women"],
+    dimensions: { length: 32, width: 12, height: 1 },
+    weight: 0.4,
+    sku: "FC2001"
+  },
+  // Women's Footwear
+  {
+    name: "Beige Heeled Sandals",
+    description: "Comfortable heeled sandals for everyday or party wear.",
+    price: 59.99,
+    discountedPrice: 45.99,
+    countInStock: 40,
+    category: "Footwear",
+    brand: "StepUp",
+    sizes: ["5", "6", "7", "8"],
+    colors: ["Beige"],
+    collections: ["Summer Collection"],
+    material: "Synthetic",
+    gender: "Women",
+    images: [
+      {
+        url: "https://imagescdn.simons.ca/images/10552/fc/fc9397e5a4c7f3c62e3e5a2e3f7a7a0d9314.jpg",
+        altText: "Image 1"
+      },
+      {
+        url: "https://imagescdn.simons.ca/images/10552/fc/fc9397e5a4c7f3c62e3e5a2e3f7a7a0d9315.jpg",
+        altText: "Image 2"
+      }
+    ],
+    isFeatured: false,
+    isPublished: true,
+    rating: 4.2,
+    numReviews: 25,
+    tags: ["sandals", "heeled", "women"],
+    dimensions: { length: 10, width: 5, height: 4 },
+    weight: 0.7,
+    sku: "SU3001"
+  },
+  // Women's Accessories
+  {
+    name: "Silk Scarf",
+    description: "Elegant silk scarf with floral patterns.",
+    price: 24.99,
+    discountedPrice: 18.99,
+    countInStock: 120,
+    category: "Accessories",
+    brand: "Scarves&More",
+    sizes: ["One Size"],
+    colors: ["Red", "Blue"],
+    collections: ["Spring Collection"],
+    material: "Silk",
+    gender: "Women",
+    images: [
+      {
+        url: "https://www.simplyscarvesandaccessories.co.uk/images/floral-silk-scarf-pink-p1820-2764_image.jpg",
+        altText: "Image 1"
+      },
+      {
+        url: "https://www.simplyscarvesandaccessories.co.uk/images/floral-silk-scarf-blue-p1819-2762_image.jpg",
+        altText: "Image 2"
+      }
+    ],
+    isFeatured: true,
+    isPublished: true,
+    rating: 4.7,
+    numReviews: 98,
+    tags: ["scarf", "accessories", "women"],
+    dimensions: { length: 20, width: 20, height: 1 },
+    weight: 0.1,
+    sku: "SM4001"
+  },
+  // Unisex Top Wear
+  {
+    name: "Unisex Graphic Hoodie",
+    description: "Trendy oversized hoodie with graphic design for all genders.",
+    price: 54.99,
+    discountedPrice: 39.99,
+    countInStock: 140,
+    category: "Top Wear",
+    brand: "UrbanVibe",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["Black", "White"],
+    collections: ["Street Style", "Winter Collection"],
+    material: "Fleece",
+    gender: "Unisex",
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=500&q=80",
+        altText: "Image 1"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80",
+        altText: "Image 2"
+      }
+    ],
+    isFeatured: true,
+    isPublished: true,
+    rating: 4.5,
+    numReviews: 120,
+    tags: ["hoodie", "graphic", "unisex"],
+    dimensions: { length: 14, width: 10, height: 2 },
+    weight: 0.6,
+    sku: "UVH5002"
+  },
+  // Unisex Bottom Wear
+  {
+    name: "Drawstring Joggers",
+    description: "Comfortable joggers with adjustable drawstring for men and women.",
+    price: 39.99,
+    discountedPrice: 29.99,
+    countInStock: 95,
+    category: "Bottom Wear",
+    brand: "ActivePro",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["Grey", "Black"],
+    collections: ["Sportswear", "Essentials"],
+    material: "Polyester",
+    gender: "Unisex",
+    images: [
+      {
+        url: "https://americantall.com/cdn/shop/files/American-Tall-Women-Basics-Athletic-Jogger-Black-front.jpg?v=1706735469",
+        altText: "Image 1"
+      },
+      {
+        url: "https://assets.ajio.com/medias/sys_master/root/20221015/19O0/634a5eaeaeb269659c47008e/-473Wx593H-469241049-jetblack-MODEL.jpg",
+        altText: "Image 2"
+      }
+    ],
+    isFeatured: false,
+    isPublished: true,
+    rating: 4.2,
+    numReviews: 38,
+    tags: ["pants", "joggers", "unisex"],
+    dimensions: { length: 39, width: 11, height: 2 },
+    weight: 0.5,
+    sku: "APJ1234U"
+  },
+  // Unisex Footwear
+  {
+    name: "Classic Canvas Sneakers",
+    description: "Retro-style canvas sneakers suitable for everyone.",
+    price: 34.99,
+    discountedPrice: 24.99,
+    countInStock: 70,
+    category: "Footwear",
+    brand: "StreetStep",
+    sizes: ["6", "7", "8", "9", "10"],
+    colors: ["White", "Navy", "Red"],
+    collections: ["Essentials", "Street Style"],
+    material: "Canvas",
+    gender: "Unisex",
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=500&q=80",
+        altText: "Image 1"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=500&q=80",
+        altText: "Image 2"
+      }
+    ],
+    isFeatured: true,
+    isPublished: true,
+    rating: 4.6,
+    numReviews: 75,
+    tags: ["sneakers", "canvas", "unisex"],
+    dimensions: { length: 11, width: 4, height: 4 },
+    weight: 0.7,
+    sku: "STS6001"
+  },
+  // Unisex Accessories
+  {
+    name: "Classic Beanie",
+    description: "Warm, knitted beanie for cold weather, fits all.",
+    price: 15.99,
+    discountedPrice: 10.99,
+    countInStock: 200,
+    category: "Accessories",
+    brand: "CozyHead",
+    sizes: ["One Size"],
+    colors: ["Black", "Grey", "Red"],
+    collections: ["Winter Collection"],
+    material: "Wool Blend",
+    gender: "Unisex",
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=500&q=80",
+        altText: "Image 1"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80",
+        altText: "Image 2"
+      }
+    ],
+    isFeatured: false,
+    isPublished: true,
+    rating: 4.3,
+    numReviews: 180,
+    tags: ["beanie", "winter", "unisex"],
+    dimensions: { length: 7, width: 7, height: 3 },
+    weight: 0.2,
+    sku: "CH7001"
+  },
+  // Men's Accessories
+  {
+    name: "Aviator Sunglasses",
+    description: "Classic aviator sunglasses for a stylish look.",
+    price: 49.99,
+    discountedPrice: 39.99,
+    countInStock: 100,
+    category: "Accessories",
+    brand: "SunShades",
+    sizes: ["One Size"],
+    colors: ["Black", "Silver"],
+    collections: ["Summer Collection"],
+    material: "Metal",
+    gender: "Men",
+    images: [
+      {
+        url: "https://cdn.shopify.com/s/files/1/0087/1339/0420/products/vintage-aviator-sunglasses-men-polarized-women-brand-designer-metal-sun-glasses-for-men-driving-uv400-male-shades-1_1024x1024.jpg?v=1618576252",
+        altText: "Image 1"
+      },
+      {
+        url: "https://cdn.shopify.com/s/files/1/0087/1339/0420/products/vintage-aviator-sunglasses-men-polarized-women-brand-designer-metal-sun-glasses-for-men-driving-uv400-male-shades-2_1024x1024.jpg?v=1618576252",
+        altText: "Image 2"
+      }
+    ],
+    isFeatured: true,
+    isPublished: true,
+    rating: 4.4,
+    numReviews: 75,
+    tags: ["sunglasses", "aviator", "men"],
+    dimensions: { length: 6, width: 2, height: 2 },
+    weight: 0.15,
+    sku: "SS5001"
+  }
 ];
 
 module.exports = products;
