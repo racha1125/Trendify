@@ -16,8 +16,15 @@ import UserManagement from './components/Admin/UserManagement';
 import ProductManagement from './components/Admin/ProductManagement';
 import EditProductPage from './components/Admin/EditProductPage';
 import OrderManagement from './components/Admin/OrderManagement';
+
+import {Provider} from 'react-redux';
+import store from './redux/store';
+import OrderDetailsPage from './pages/OrderDetailsPage';
+import ProtectedRoute from './components/Common/ProtectedRoute';
+
 function App() {
   return (
+    <Provider store={store}>
     <Router>
       <Toaster position='top-right'/>
       <Routes>
@@ -30,9 +37,17 @@ function App() {
           <Route path='product/:id' element={<ProductDetails/>}/>
           <Route path="checkout/" element={<Checkout/>}/>
           <Route path="order-confirmation" element={<OrderConfirmationPage/>}/>
+          <Route path="order/:id" element={<OrderDetailsPage/>}/>
           <Route path="my-orders/" element={<MyOrdersPage/>}/>
         </Route>
-        <Route path='/admin' element={<AdminLayout/>}>
+        <Route 
+          path='/admin' 
+          element={
+            <ProtectedRoute role='admin'>
+              <AdminLayout/>
+            </ProtectedRoute>
+          }
+        >
           <Route index element={<AdminHomePage/>}/>
           <Route path='users' element={<UserManagement/>}/>
           <Route path='products' element={<ProductManagement/>}/>
@@ -41,6 +56,7 @@ function App() {
         </Route>
       </Routes>
     </Router>
+    </Provider>
   )
 }
 
