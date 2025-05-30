@@ -36,8 +36,9 @@ function FilterSidebar() {
         "Beach Breeze",
         "Fashionista",
         "ChicStyle",
+        "UrbanVibe"
     ];
-    const gender = ["Men","Women"];
+    const gender = ["Men","Women","Unisex"];
     const material = ["Cotton","Wool","Denim","Silk","Polyester","Linen","Viscose","Fleece"];
     
     useEffect(() => {
