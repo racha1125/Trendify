@@ -276,5 +276,23 @@ router.post("/merge", protect, async (req, res) => {
     
 });
 
+// ADD THIS for clearing the cart:
+router.post("/clear", async (req, res) => {
+    const { userId, guestId } = req.body;
+    try {
+        let cart = await getCart(userId, guestId);
+        if (!cart) {
+            return res.status(200).json({ products: [] });
+        }
+        cart.products = [];
+        cart.totalPrice = 0;
+        await cart.save();
+        return res.status(200).json(cart);
+    } catch (error) {
+        console.error("Error clearing cart:", error);
+        return res.status(500).json({ message: "Server error" });
+    }
+});
+
 
 module.exports = router;
