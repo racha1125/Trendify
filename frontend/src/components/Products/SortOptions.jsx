@@ -19,7 +19,6 @@ function SortOptions() {
             <option value="priceAsc">Price: Low to High</option>
             <option value="priceDesc">Price: High to Low</option>
             <option value="popularity">Popularity</option>
-            <option value="rating">Rating</option>
         </select>
     </div>
   )
