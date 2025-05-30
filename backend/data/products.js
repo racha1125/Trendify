@@ -446,11 +446,11 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/12140734/2020/11/18/9e9f1a80-2f4f-4278-aa7a-ae7e9d2a27c01605694778920-Roadster-Women-Shirts-5851605694777221-1.jpg",
+        url: "https://assets.panashindia.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/5/152bl02-act7930.jpg",
         altText: "Image 1"
       },
       {
-        url: "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/12140734/2020/11/18/1c5d8b4b-7b8e-4a6f-9ad5-a68d8f3e15b31605694778899-Roadster-Women-Shirts-5851605694777221-2.jpg",
+        url: "https://rutbaa.com/pub/media/catalog/product/cache/667471af41df3312a8526ead39728ce0/r/u/rutbaa_0051_act7932.jpg",
         altText: "Image 2"
       }
     ],
@@ -479,11 +479,11 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://img.ltwebstatic.com/images3_pi/2022/10/17/1665990233a6ec6764b86b5e9c8e6e2a5b6f2c6c96_thumbnail_900x.webp",
+        url: "https://assets.sheinindia.in/medias/shein_sys_master/root/20250423/JB8b/6808c6d755340d4b4ff42006/-473Wx593H-443324242-pink-MODEL.jpg",
         altText: "Image 1"
       },
       {
-        url: "https://img.ltwebstatic.com/images3_pi/2022/10/17/166599023399a6d5b73d3d0c9b4e4e8fae6b8ebae3_thumbnail_900x.webp",
+        url: "https://www.lulus.com/images/product/xlarge/3514100_734342.jpg?w=415&hdpi=1",
         altText: "Image 2"
       }
     ],
@@ -512,11 +512,11 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://imagescdn.simons.ca/images/10552/fc/fc9397e5a4c7f3c62e3e5a2e3f7a7a0d9314.jpg",
+        url: "https://assets.ajio.com/medias/sys_master/root/20211005/2kgS/615c78e8aeb2692b85ae801f/-1117Wx1400H-460979554-beige-MODEL.jpg",
         altText: "Image 1"
       },
       {
-        url: "https://imagescdn.simons.ca/images/10552/fc/fc9397e5a4c7f3c62e3e5a2e3f7a7a0d9315.jpg",
+        url: "https://images.meesho.com/images/products/237535161/xfrwu_512.webp",
         altText: "Image 2"
       }
     ],
@@ -545,11 +545,11 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://www.simplyscarvesandaccessories.co.uk/images/floral-silk-scarf-pink-p1820-2764_image.jpg",
+        url: "https://media.istockphoto.com/id/1568617425/photo/red-silk-fabric-red-cloth-material-flying-in-the-wind-3d-rendering.jpg?s=612x612&w=0&k=20&c=Z2Gc0r8qrOhlXtAKQUaYHIXCD24RPHVfk3cMCoqKD98=",
         altText: "Image 1"
       },
       {
-        url: "https://www.simplyscarvesandaccessories.co.uk/images/floral-silk-scarf-blue-p1819-2762_image.jpg",
+        url: "https://media.istockphoto.com/id/1301120610/photo/beautiful-flowing-fabric-of-red-wavy-silk-or-satin-3d-rendering-image.jpg?s=612x612&w=0&k=20&c=q7GYQS5iY3-46VgDiK0nAwFv0qFNhdXX7m8pRAFVD-Y=",
         altText: "Image 2"
       }
     ],
@@ -578,11 +578,11 @@ const products = [
     gender: "Unisex",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=500&q=80",
+        url: "https://www.levi.co.za/cdn/shop/files/df0594526fa8727e0c456bf606a8b0af.jpg?v=1744199605&width=1080",
         altText: "Image 1"
       },
       {
-        url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80",
+        url: "https://martinvalen.com/26645-thickbox_default/men-s-oversized-signature-detail-black-cordless-hoodie.jpg",
         altText: "Image 2"
       }
     ],
@@ -644,11 +644,11 @@ const products = [
     gender: "Unisex",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=500&q=80",
+        url: "https://m.media-amazon.com/images/I/616bXmcW9gL._AC_UY1000_.jpg",
         altText: "Image 1"
       },
       {
-        url: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=500&q=80",
+        url: "https://m.media-amazon.com/images/I/314IMHVOGgL._AC_SY900_.jpg",
         altText: "Image 2"
       }
     ],
@@ -677,11 +677,11 @@ const products = [
     gender: "Unisex",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=500&q=80",
+        url: "https://m.media-amazon.com/images/I/71duRG1qLOL._AC_UY1100_.jpg",
         altText: "Image 1"
       },
       {
-        url: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80",
+        url: "https://hatstore.imgix.net/HS2315985_1.jpg?auto=compress%2Cformat&w=717&h=574&fit=crop&q=80",
         altText: "Image 2"
       }
     ],
@@ -710,11 +710,11 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://cdn.shopify.com/s/files/1/0087/1339/0420/products/vintage-aviator-sunglasses-men-polarized-women-brand-designer-metal-sun-glasses-for-men-driving-uv400-male-shades-1_1024x1024.jpg?v=1618576252",
+        url: "https://images2.ray-ban.com//cdn-record-files-pi/f2a2b356-cf47-4e4c-bd0e-a35900057b03/d50aff28-bfb5-44a3-bce5-ad1b007c1ac5/0RB3025__L0205__STD__shad__fr.png?impolicy=RB_Product_clone&width=700&bgc=%23f2f2f2",
         altText: "Image 1"
       },
       {
-        url: "https://cdn.shopify.com/s/files/1/0087/1339/0420/products/vintage-aviator-sunglasses-men-polarized-women-brand-designer-metal-sun-glasses-for-men-driving-uv400-male-shades-2_1024x1024.jpg?v=1618576252",
+        url: "https://india.ray-ban.com/media/catalog/product/cache/9198bde1d0eff71feec5e39d680e88c5/0/r/0rb302500248_2.jpg",
         altText: "Image 2"
       }
     ],
