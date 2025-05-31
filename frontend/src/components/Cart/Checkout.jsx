@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import PaypalButton from './PaypalButton';
+import PayPalButton from './PayPalButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { createCheckout } from '../../redux/slices/checkoutSlice';
 import axios from 'axios';
@@ -207,7 +207,7 @@ function Checkout() {
                         ) : (
                             <div>
                                 <h3 className='text-lg mb-4'>Pay with Paypal</h3>
-                                <PaypalButton
+                                <PayPalButton
                                     amount={cart.totalPrice}
                                     onSuccess={handlePaymentSuccess}
                                     onError={(err) =>
