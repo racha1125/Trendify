@@ -305,19 +305,26 @@ function ProductManagement() {
                                 {uploading && <p className="text-sm text-gray-500 mt-2">Uploading...</p>}
                                 <div className="flex gap-4 mt-4 flex-wrap">
                                     {form.images.map((image, index) => (
-                                        <div key={index} className="relative group flex flex-col items-center">
+                                        <div
+                                            key={index}
+                                            className="relative group flex flex-col items-center w-32"
+                                        >
                                             <img
                                                 src={image.url || image.imageUrl}
                                                 alt={image.altText || "Product Image"}
-                                                className='w-20 h-20 object-cover rounded-md shadow-md mb-1'
+                                                className='w-24 h-24 object-cover rounded-md shadow-md mb-2 border border-gray-300'
                                             />
                                             <input
                                                 type="text"
-                                                placeholder="Alt text"
-                                                className="border border-gray-300 rounded px-1 py-0.5 text-xs w-20"
+                                                placeholder="Alt text (required)"
+                                                className="border border-blue-500 rounded px-2 py-1 text-xs w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
                                                 value={image.altText || ""}
                                                 onChange={e => handleAltTextChange(index, e.target.value)}
+                                                required
                                             />
+                                            {!image.altText && (
+                                                <span className="text-xs text-red-500 mt-1">Alt text is required</span>
+                                            )}
                                             <button
                                                 type="button"
                                                 onClick={() => handleRemoveImage(index)}
@@ -329,11 +336,14 @@ function ProductManagement() {
                                         </div>
                                     ))}
                                 </div>
+                                {form.images.length > 0 && form.images.some(img => !img.altText) && (
+                                    <p className="text-xs text-red-500 mt-2">Please provide alt text for all images before submitting.</p>
+                                )}
                             </div>
                             <button
                                 type="submit"
                                 className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-                                disabled={uploading}
+                                disabled={uploading || (form.images.length > 0 && form.images.some(img => !img.altText))}
                             >Add Product</button>
                         </form>
                     </div>
