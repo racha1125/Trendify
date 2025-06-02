@@ -69,26 +69,31 @@ function ProductManagement() {
         }
     };
 
-    // Handle image upload
+    // Handle image upload (multiple files)
     const handleImageChange = async (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-        const formData = new FormData();
-        formData.append("image", file);
+        const files = Array.from(e.target.files);
+        if (!files.length) return;
 
+        setUploading(true);
         try {
-            setUploading(true);
-            const { data } = await axios.post(
-                `${import.meta.env.VITE_BACKEND_URL}/api/upload`,
-                formData,
-                { headers: { "Content-Type": "multipart/form-data" } }
-            );
+            const uploadedImages = [];
+            for (let file of files) {
+                const formData = new FormData();
+                formData.append("image", file);
+
+                const { data } = await axios.post(
+                    `${import.meta.env.VITE_BACKEND_URL}/api/upload`,
+                    formData,
+                    { headers: { "Content-Type": "multipart/form-data" } }
+                );
+                uploadedImages.push({
+                    url: data.url || data.imageUrl,
+                    altText: "",
+                });
+            }
             setForm((prev) => ({
                 ...prev,
-                images: [
-                  ...prev.images,
-                  { url: data.url || data.imageUrl, altText: data.altText || "Product Image" }
-                ],
+                images: [...prev.images, ...uploadedImages],
             }));
         } catch (error) {
             console.error("Error uploading image:", error);
@@ -103,6 +108,18 @@ function ProductManagement() {
             ...prev,
             images: prev.images.filter((_, idx) => idx !== removeIdx),
         }));
+    };
+
+    // Change altText for a specific image
+    const handleAltTextChange = (index, newAltText) => {
+        setForm((prev) => {
+            const newImages = [...prev.images];
+            newImages[index] = {
+                ...newImages[index],
+                altText: newAltText,
+            };
+            return { ...prev, images: newImages };
+        });
     };
 
     // Handle submit
@@ -124,7 +141,10 @@ function ProductManagement() {
                 width: Number(form.dimensions.width),
                 height: Number(form.dimensions.height),
             },
-            images: form.images, // already normalized
+            images: form.images.map(img => ({
+                url: img.url,
+                altText: img.altText && img.altText.trim() !== "" ? img.altText : "Product Image",
+            })),
         };
         dispatch(createProduct(formattedProduct));
         setShowAddModal(false);
@@ -277,6 +297,7 @@ function ProductManagement() {
                                 <label className="block mb-1 font-medium">Upload Images</label>
                                 <input
                                     type="file"
+                                    multiple
                                     className="file:mr-4 file:py-1 file:px-4 file:border file:border-gray-300 file:rounded-md file:text-sm file:bg-white file:text-gray-700 hover:file:bg-gray-100"
                                     onChange={handleImageChange}
                                     disabled={uploading}
@@ -284,11 +305,18 @@ function ProductManagement() {
                                 {uploading && <p className="text-sm text-gray-500 mt-2">Uploading...</p>}
                                 <div className="flex gap-4 mt-4 flex-wrap">
                                     {form.images.map((image, index) => (
-                                        <div key={index} className="relative group">
+                                        <div key={index} className="relative group flex flex-col items-center">
                                             <img
                                                 src={image.url || image.imageUrl}
                                                 alt={image.altText || "Product Image"}
-                                                className='w-20 h-20 object-cover rounded-md shadow-md'
+                                                className='w-20 h-20 object-cover rounded-md shadow-md mb-1'
+                                            />
+                                            <input
+                                                type="text"
+                                                placeholder="Alt text"
+                                                className="border border-gray-300 rounded px-1 py-0.5 text-xs w-20"
+                                                value={image.altText || ""}
+                                                onChange={e => handleAltTextChange(index, e.target.value)}
                                             />
                                             <button
                                                 type="button"
