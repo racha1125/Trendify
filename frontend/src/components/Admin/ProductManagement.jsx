@@ -6,6 +6,7 @@ import {
     fetchAdminProducts,
     createProduct,
 } from "../../redux/slices/adminProductSlice";
+import axios from "axios";
 
 function ProductManagement() {
     const dispatch = useDispatch();
@@ -13,6 +14,7 @@ function ProductManagement() {
 
     // Modal state & form state
     const [showAddModal, setShowAddModal] = useState(false);
+    const [uploading, setUploading] = useState(false);
     const [form, setForm] = useState({
         name: "",
         description: "",
@@ -26,7 +28,7 @@ function ProductManagement() {
         collections: "",
         material: "",
         gender: "",
-        images: [{ url: "", altText: "" }],
+        images: [],
         isFeatured: false,
         isPublished: false,
         tags: "",
@@ -54,14 +56,6 @@ function ProductManagement() {
                 ...prev,
                 dimensions: { ...prev.dimensions, [dimField]: value }
             }));
-        } else if (name.startsWith("images.")) {
-            const [_, idx, field] = name.split(".");
-            const updatedImages = [...form.images];
-            updatedImages[Number(idx)][field] = value;
-            setForm((prev) => ({
-                ...prev,
-                images: updatedImages
-            }));
         } else if (type === "checkbox") {
             setForm((prev) => ({
                 ...prev,
@@ -75,17 +69,39 @@ function ProductManagement() {
         }
     };
 
-    const handleAddImageField = () => {
-        setForm((prev) => ({
-            ...prev,
-            images: [...prev.images, { url: "", altText: "" }]
-        }));
+    // Handle image upload
+    const handleImageChange = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const formData = new FormData();
+        formData.append("image", file);
+
+        try {
+            setUploading(true);
+            const { data } = await axios.post(
+                `${import.meta.env.VITE_BACKEND_URL}/api/upload`,
+                formData,
+                { headers: { "Content-Type": "multipart/form-data" } }
+            );
+            setForm((prev) => ({
+                ...prev,
+                images: [
+                  ...prev.images,
+                  { url: data.url || data.imageUrl, altText: data.altText || "Product Image" }
+                ],
+            }));
+        } catch (error) {
+            console.error("Error uploading image:", error);
+        } finally {
+            setUploading(false);
+        }
     };
 
-    const handleRemoveImageField = (idx) => {
+    // Remove image by index
+    const handleRemoveImage = (removeIdx) => {
         setForm((prev) => ({
             ...prev,
-            images: prev.images.filter((_, i) => i !== idx)
+            images: prev.images.filter((_, idx) => idx !== removeIdx),
         }));
     };
 
@@ -108,7 +124,7 @@ function ProductManagement() {
                 width: Number(form.dimensions.width),
                 height: Number(form.dimensions.height),
             },
-            images: form.images.filter(img => img.url.trim() !== ""),
+            images: form.images, // already normalized
         };
         dispatch(createProduct(formattedProduct));
         setShowAddModal(false);
@@ -125,7 +141,7 @@ function ProductManagement() {
             collections: "",
             material: "",
             gender: "",
-            images: [{ url: "", altText: "" }],
+            images: [],
             isFeatured: false,
             isPublished: false,
             tags: "",
@@ -256,45 +272,40 @@ function ProductManagement() {
                                     Published
                                 </label>
                             </div>
-                            {/* Images input */}
+                            {/* Image Upload */}
                             <div>
-                                <label className="block mb-1 font-medium">Images</label>
-                                {form.images.map((img, idx) => (
-                                    <div className="flex gap-2 mb-2" key={idx}>
-                                        <input
-                                            className="w-full border px-3 py-2 rounded"
-                                            name={`images.${idx}.url`}
-                                            placeholder="Image URL"
-                                            value={img.url}
-                                            onChange={handleFormChange}
-                                        />
-                                        <input
-                                            className="border px-3 py-2 rounded"
-                                            name={`images.${idx}.altText`}
-                                            placeholder="Alt text"
-                                            value={img.altText}
-                                            onChange={handleFormChange}
-                                        />
-                                        {form.images.length > 1 && (
+                                <label className="block mb-1 font-medium">Upload Images</label>
+                                <input
+                                    type="file"
+                                    className="file:mr-4 file:py-1 file:px-4 file:border file:border-gray-300 file:rounded-md file:text-sm file:bg-white file:text-gray-700 hover:file:bg-gray-100"
+                                    onChange={handleImageChange}
+                                    disabled={uploading}
+                                />
+                                {uploading && <p className="text-sm text-gray-500 mt-2">Uploading...</p>}
+                                <div className="flex gap-4 mt-4 flex-wrap">
+                                    {form.images.map((image, index) => (
+                                        <div key={index} className="relative group">
+                                            <img
+                                                src={image.url || image.imageUrl}
+                                                alt={image.altText || "Product Image"}
+                                                className='w-20 h-20 object-cover rounded-md shadow-md'
+                                            />
                                             <button
                                                 type="button"
-                                                onClick={() => handleRemoveImageField(idx)}
-                                                className="bg-red-400 text-white px-2 rounded"
-                                            >-</button>
-                                        )}
-                                        {idx === form.images.length - 1 && (
-                                            <button
-                                                type="button"
-                                                onClick={handleAddImageField}
-                                                className="bg-green-500 text-white px-2 rounded"
-                                            >+</button>
-                                        )}
-                                    </div>
-                                ))}
+                                                onClick={() => handleRemoveImage(index)}
+                                                className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs opacity-80 group-hover:opacity-100 transition-opacity"
+                                                title="Remove Image"
+                                            >
+                                                &times;
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                             <button
                                 type="submit"
                                 className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+                                disabled={uploading}
                             >Add Product</button>
                         </form>
                     </div>
