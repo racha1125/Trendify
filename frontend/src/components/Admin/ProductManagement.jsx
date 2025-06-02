@@ -256,30 +256,39 @@ function ProductManagement() {
                             <input className="w-full border px-3 py-2 rounded" name="sku" placeholder="SKU" value={form.sku} onChange={handleFormChange} required />
                             <input className="w-full border px-3 py-2 rounded" name="tags" placeholder="Tags (comma separated)" value={form.tags} onChange={handleFormChange} />
                             <div className="flex gap-2">
-                                <input
-                                    className="border px-3 py-2 rounded"
-                                    type="number"
-                                    name="dimensions.length"
-                                    placeholder="Length"
-                                    value={form.dimensions.length}
-                                    onChange={handleFormChange}
-                                />
-                                <input
-                                    className="border px-3 py-2 rounded"
-                                    type="number"
-                                    name="dimensions.width"
-                                    placeholder="Width"
-                                    value={form.dimensions.width}
-                                    onChange={handleFormChange}
-                                />
-                                <input
-                                    className="border px-3 py-2 rounded"
-                                    type="number"
-                                    name="dimensions.height"
-                                    placeholder="Height"
-                                    value={form.dimensions.height}
-                                    onChange={handleFormChange}
-                                />
+                                <div className="flex flex-col flex-1">
+                                    <label className="text-xs mb-1">Length</label>
+                                    <input
+                                        className="border px-3 py-2 rounded w-full"
+                                        type="number"
+                                        name="dimensions.length"
+                                        placeholder="Length"
+                                        value={form.dimensions.length}
+                                        onChange={handleFormChange}
+                                    />
+                                </div>
+                                <div className="flex flex-col flex-1">
+                                    <label className="text-xs mb-1">Width</label>
+                                    <input
+                                        className="border px-3 py-2 rounded w-full"
+                                        type="number"
+                                        name="dimensions.width"
+                                        placeholder="Width"
+                                        value={form.dimensions.width}
+                                        onChange={handleFormChange}
+                                    />
+                                </div>
+                                <div className="flex flex-col flex-1">
+                                    <label className="text-xs mb-1">Height</label>
+                                    <input
+                                        className="border px-3 py-2 rounded w-full"
+                                        type="number"
+                                        name="dimensions.height"
+                                        placeholder="Height"
+                                        value={form.dimensions.height}
+                                        onChange={handleFormChange}
+                                    />
+                                </div>
                             </div>
                             <input className="w-full border px-3 py-2 rounded" type="number" name="weight" placeholder="Weight (kg)" value={form.weight} onChange={handleFormChange} />
                             <div>
