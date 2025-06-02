@@ -21,7 +21,7 @@ connectDB();
 
 // ✅ CORS configuration to allow your frontend origin
 app.use(cors({
-  origin: 'https://trendify-xga5.vercel.app', // Allow only this frontend origin
+  origin: 'https://trendify-dgbo.vercel.app', // Allow only this frontend origin
   credentials: true,
 }));
 
