@@ -726,43 +726,6 @@ const products = [
     dimensions: { length: 6, width: 2, height: 2 },
     weight: 0.15,
     sku: "SS5001"
-  },
-  {
-    name: "Black Graphic Tee",
-    description: "Trendy black t-shirt featuring a bold graphic print. Made from soft cotton for comfort.",
-    price: 27.99,
-    discountedPrice: 18.99,
-    countInStock: 120,
-    category: "Top Wear",
-    brand: "Sample Brand",
-    sizes: ["XS", "S", "M", "L"],
-    colors: ["Black"],
-    collections: ["Street Style", "New Arrivals"],
-    material: "Cotton",
-    gender: "Men",
-    images: [
-      {
-        url: "https://m.media-amazon.com/images/I/413caXAz5HL._AC_UY1100_.jpg",
-        altText: "Black Graphic Tee Front"
-      },
-      {
-        url: "https://m.media-amazon.com/images/I/41pT0y-2WwL._AC_UY350_.jpg",
-        altText: "Black Graphic Tee Back"
-      }
-    ],
-    isFeatured: true,
-    isPublished: true,
-    rating: 4.7,
-    numReviews: 58,
-    tags: ["clothing", "t-shirt", "graphic", "black"],
-    dimensions: {
-      length: 10,
-      width: 5,
-      height: 2
-    },
-    weight: 0.48,
-    sku: "SP12347"
-  },
+  }
 ];
-
 module.exports = products;
