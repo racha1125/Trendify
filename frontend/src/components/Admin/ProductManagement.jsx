@@ -15,6 +15,8 @@ function ProductManagement() {
     // Modal state & form state
     const [showAddModal, setShowAddModal] = useState(false);
     const [uploading, setUploading] = useState(false);
+    const [newImageUrl, setNewImageUrl] = useState("");
+    const [newImageAlt, setNewImageAlt] = useState("");
     const [form, setForm] = useState({
         name: "",
         description: "",
@@ -100,6 +102,24 @@ function ProductManagement() {
         } finally {
             setUploading(false);
         }
+    };
+
+    // Add image by URL
+    const handleAddImageByUrl = (e) => {
+        e.preventDefault();
+        if (!newImageUrl.trim()) return;
+        setForm((prev) => ({
+            ...prev,
+            images: [
+                ...prev.images,
+                {
+                    url: newImageUrl.trim(),
+                    altText: newImageAlt.trim() || "",
+                }
+            ],
+        }));
+        setNewImageUrl("");
+        setNewImageAlt("");
     };
 
     // Remove image by index
@@ -301,7 +321,7 @@ function ProductManagement() {
                                     Published
                                 </label>
                             </div>
-                            {/* Image Upload */}
+                            {/* Image Upload and URL */}
                             <div>
                                 <label className="block mb-1 font-medium">Upload Images</label>
                                 <input
@@ -312,6 +332,35 @@ function ProductManagement() {
                                     disabled={uploading}
                                 />
                                 {uploading && <p className="text-sm text-gray-500 mt-2">Uploading...</p>}
+
+                                {/* Add by URL */}
+                                <form onSubmit={handleAddImageByUrl} className="flex mt-4 gap-2 flex-wrap">
+                                    <input
+                                        type="url"
+                                        className="border px-2 py-1 rounded w-52"
+                                        placeholder="Image URL"
+                                        value={newImageUrl}
+                                        onChange={e => setNewImageUrl(e.target.value)}
+                                        required={false}
+                                    />
+                                    <input
+                                        type="text"
+                                        className="border px-2 py-1 rounded w-40"
+                                        placeholder="Alt text"
+                                        value={newImageAlt}
+                                        onChange={e => setNewImageAlt(e.target.value)}
+                                        required={false}
+                                    />
+                                    <button
+                                        type="submit"
+                                        className="bg-blue-500 text-white px-2 rounded hover:bg-blue-600"
+                                        disabled={!newImageUrl.trim()}
+                                    >
+                                        Add by URL
+                                    </button>
+                                </form>
+
+                                {/* Preview all images (uploaded + by URL) */}
                                 <div className="flex gap-4 mt-4 flex-wrap">
                                     {form.images.map((image, index) => (
                                         <div
