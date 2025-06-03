@@ -14,6 +14,9 @@ function ProductManagement() {
 
     // Modal state & form state
     const [showAddModal, setShowAddModal] = useState(false);
+    const [showPasteModal, setShowPasteModal] = useState(false);
+    const [pasteText, setPasteText] = useState("");
+    const [pasteError, setPasteError] = useState("");
     const [uploading, setUploading] = useState(false);
     const [newImageUrl, setNewImageUrl] = useState("");
     const [newImageAlt, setNewImageAlt] = useState("");
@@ -191,6 +194,44 @@ function ProductManagement() {
         });
     };
 
+    // Handle pasted JSON or JS object(s)
+    const handlePasteJson = (e) => {
+        e.preventDefault();
+        setPasteError("");
+        let parsed;
+        try {
+            parsed = JSON.parse(pasteText);
+        } catch {
+            try {
+                // Try to eval for JS-style object (unquoted keys)
+                // eslint-disable-next-line no-eval
+                parsed = eval("(" + pasteText + ")");
+            } catch (err) {
+                console.error("Invalid JSON or JS object syntax:", err);
+                setPasteError("Invalid JSON or JS object syntax. Please check your input.");
+                return;
+            }
+        }
+        let objects = Array.isArray(parsed) ? parsed : [parsed];
+        let validObjects = [];
+        for (const obj of objects) {
+            // Validate required fields minimally
+            if (obj && obj.name && obj.sku) {
+                validObjects.push(obj);
+            }
+        }
+        if (!validObjects.length) {
+            setPasteError("No valid product objects found.");
+            return;
+        }
+        // If multiple, dispatch createProduct for each
+        validObjects.forEach((product) => {
+            dispatch(createProduct(product));
+        });
+        setShowPasteModal(false);
+        setPasteText("");
+    };
+
     if (loading) {
         return <div className="text-center text-gray-500">Loading...</div>;
     }
@@ -200,10 +241,16 @@ function ProductManagement() {
     return (
         <div className="max-w-7xl mx-auto p-6">
             <h2 className="text-2xl font-bold mb-6">Product Management</h2>
-            <button
-                className="mb-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                onClick={() => setShowAddModal(true)}
-            >Add Product</button>
+            <div className="flex gap-2 mb-4">
+                <button
+                    className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    onClick={() => setShowAddModal(true)}
+                >Add Product</button>
+                <button
+                    className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+                    onClick={() => setShowPasteModal(true)}
+                >Paste Product Object</button>
+            </div>
             <div className="overflow-x-auto shadow-md sm:rounded-lg">
                 <table className="min-w-full text-left text-gray-500">
                     <thead className="bg-gray-100 text-xs uppercase text-gray-700">
@@ -250,6 +297,33 @@ function ProductManagement() {
                     </tbody>
                 </table>
             </div>
+
+            {/* Paste Product Modal */}
+            {showPasteModal && (
+                <div className="fixed inset-0 bg-black bg-opacity-30 flex justify-center items-center z-50">
+                    <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full relative overflow-y-auto max-h-[90vh]">
+                        <button
+                            onClick={() => setShowPasteModal(false)}
+                            className="absolute top-2 right-2 text-gray-600 hover:text-red-600 text-2xl"
+                        >&times;</button>
+                        <h3 className="text-lg font-semibold mb-4">Paste Product Object(s)</h3>
+                        <form onSubmit={handlePasteJson} className="space-y-3">
+                            <textarea
+                                className="w-full border px-3 py-2 rounded font-mono"
+                                rows={10}
+                                placeholder="Paste object or array of objects here (as JSON or JS object syntax)"
+                                value={pasteText}
+                                onChange={e => setPasteText(e.target.value)}
+                                required
+                            />
+                            {pasteError && <div className="text-red-500 text-sm">{pasteError}</div>}
+                            <button type="submit" className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
+                                Add Product(s)
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            )}
 
             {/* Add Product Modal */}
             {showAddModal && (
@@ -341,7 +415,6 @@ function ProductManagement() {
                                         placeholder="Image URL"
                                         value={newImageUrl}
                                         onChange={e => setNewImageUrl(e.target.value)}
-                                        required={false}
                                     />
                                     <input
                                         type="text"
@@ -349,7 +422,6 @@ function ProductManagement() {
                                         placeholder="Alt text"
                                         value={newImageAlt}
                                         onChange={e => setNewImageAlt(e.target.value)}
-                                        required={false}
                                     />
                                     <button
                                         type="submit"
