@@ -726,6 +726,42 @@ const products = [
     dimensions: { length: 6, width: 2, height: 2 },
     weight: 0.15,
     sku: "SS5001"
-  }
+  },
+  {
+        name: "Gray Shirt",
+        description: "A comfortable blue t-shirt made from 100% cotton.",
+        price: 29.99,
+        discountedPrice: 19.99,
+        countInStock: 100,
+        category: "Top Wear",
+        brand: "Sample Brand",
+        sizes: ["S", "M", "L"],
+        colors: ["Gray"],
+        collections: ["Summer Collection", "New Arrivals"],
+        material: "Cotton",
+        gender: "Men",
+        images: [
+            {
+                url: "https://hummel.net.in/cdn/shop/products/ascon-men-blue-t-shirts-2.jpg?v=1747505400",
+                altText: "Image 1"
+            },
+            {
+                url: "https://hummel.net.in/cdn/shop/products/ascon-men-blue-t-shirts-4.jpg?v=1747505400",
+                altText: "Image 2"
+            }
+        ],
+        isFeatured: true,
+        isPublished: true,
+        rating: 4,
+        numReviews:45,
+        tags: ["clothing", "t-shirt", "blue"],
+        dimensions: {
+            length: 10,
+            width: 5,
+            height: 2
+        },
+        weight: 0.5,
+        sku: "SP25367"
+    }
 ];
 module.exports = products;
